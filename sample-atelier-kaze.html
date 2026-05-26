@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier KAZE | 美容室</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--charcoal:#1e1e1e;--off-white:#f8f7f5;--accent:#8c7b6b;--light-accent:#d4c9bc;--text:#2d2d2d}
+    body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff}
+    a{text-decoration:none;color:inherit}
+    header{position:fixed;top:0;width:100%;z-index:100;background:rgba(30,30,30,0.95);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px}
+    .logo{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:#fff;letter-spacing:0.25em}
+    nav a{margin-left:24px;font-size:11px;letter-spacing:0.12em;color:rgba(255,255,255,0.6);text-transform:uppercase}
+    nav a:hover{color:#fff}
+    .nav-book{background:var(--accent);color:#fff !important;padding:6px 16px;border-radius:2px}
+    .hero{min-height:100vh;background:var(--charcoal);display:grid;grid-template-columns:1fr 1fr;padding-top:64px}
+    .hero-left{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#2a2a2a,#3d3530);font-size:120px;padding:40px}
+    .hero-right{display:flex;align-items:center;padding:60px 48px}
+    .hero-label{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:24px}
+    .hero-text h1{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(32px,4vw,52px);color:#fff;line-height:1.2;letter-spacing:0.1em;margin-bottom:24px}
+    .hero-text p{color:rgba(255,255,255,0.6);font-size:14px;line-height:2;margin-bottom:36px}
+    .btn-accent{background:var(--accent);color:#fff;padding:13px 32px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;border-radius:2px;display:inline-block;margin-right:12px}
+    .btn-line{border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:13px 28px;font-size:12px;border-radius:2px;display:inline-block}
+    section{padding:88px 20px}
+    .container{max-width:1000px;margin:0 auto}
+    .sec-label{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+    .sec-title{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(26px,3.5vw,40px);letter-spacing:0.08em;margin-bottom:16px}
+    .about{background:var(--off-white)}
+    .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .about-image{aspect-ratio:3/4;background:linear-gradient(160deg,#3d3530,#8c7b6b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:80px}
+    .menu-section{}
+    .menu-items{display:grid;gap:0}
+    .menu-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #f0f0f0}
+    .menu-name{font-size:14px;font-weight:700;margin-bottom:3px}
+    .menu-note{font-size:12px;color:#999}
+    .menu-price{font-size:15px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:20px}
+    .booking-section{background:var(--charcoal);color:#fff}
+    .booking-section .sec-title{color:#fff}
+    .booking-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px}
+    .booking-form{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:32px}
+    .booking-form h3{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:#fff;margin-bottom:24px;letter-spacing:0.1em}
+    .form-group{margin-bottom:14px}
+    .form-group label{display:block;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;letter-spacing:0.08em}
+    .form-group input,.form-group select{width:100%;padding:10px 12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:2px;font-size:13px;color:#fff;font-family:inherit}
+    .form-group select option{background:#1e1e1e}
+    .form-group input::placeholder{color:rgba(255,255,255,0.3)}
+    .btn-book{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:2px;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:8px}
+    .booking-info h3{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:#fff;margin-bottom:20px;letter-spacing:0.1em}
+    .info-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px;color:rgba(255,255,255,0.7)}
+    .info-row strong{color:var(--light-accent);min-width:80px}
+    .stylist-card{display:flex;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:4px;margin-top:10px;align-items:center}
+    .stylist-avatar{width:44px;height:44px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .stylist-name{font-size:14px;color:#fff;margin-bottom:2px}
+    .stylist-title{font-size:11px;color:rgba(255,255,255,0.5)}
+    footer{background:#111;color:rgba(255,255,255,0.4);text-align:center;padding:32px 20px;font-size:12px}
+    footer .footer-logo{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:rgba(255,255,255,0.8);letter-spacing:0.25em;margin-bottom:8px}
+    .sample-banner{position:fixed;bottom:0;left:0;right:0;background:rgba(108,99,255,0.92);color:#fff;text-align:center;padding:10px;font-size:13px;backdrop-filter:blur(4px);z-index:999}
+    .sample-banner a{color:#c7c3ff;text-decoration:underline}
+    @media(max-width:768px){header{padding:0 16px}nav{display:none}.hero{grid-template-columns:1fr}.hero-left{min-height:200px;font-size:80px}.hero-right{padding:32px 20px}.about-inner,.booking-inner{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ATELIER KAZE</div>
+    <nav><a href="#about">About</a><a href="#menu">Menu</a><a href="#booking">Booking</a><a href="#booking" class="nav-book">予約する</a></nav>
+  </header>
+  <section class="hero">
+    <div class="hero-left">✂️</div>
+    <div class="hero-right">
+      <div class="hero-text">
+        <p class="hero-label">Hair Salon · Osaka · Since 2019</p>
+        <h1>YOUR STYLE,<br>YOUR STORY.</h1>
+        <p>あなたらしさを引き出す、<br>オーダーメイドのスタイリングを。</p>
+        <a href="#booking" class="btn-accent">予約する</a>
+        <a href="#menu" class="btn-line">メニューを見る</a>
+      </div>
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image">💇</div>
+        <div>
+          <p class="sec-label">About</p>
+          <h2 class="sec-title">「風」のように、<br>自由なスタイルを。</h2>
+          <p style="font-size:14px;line-height:2;color:#666">ATELIER KAZEは「あなたらしさ」を最大限に引き出すオーダーメイドヘアサロンです。カット・カラー・パーマ、すべてのメニューにおいてお客様の骨格・ライフスタイル・なりたいイメージをヒアリングし、世界にひとつだけのスタイルをご提供します。オンライン予約で24時間いつでも予約可能です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="menu">
+    <div class="container">
+      <p class="sec-label">Menu</p>
+      <h2 class="sec-title">メニュー・料金</h2>
+      <div class="menu-items">
+        <div class="menu-row"><div><p class="menu-name">カット</p><p class="menu-note">シャンプー・ブロー込み</p></div><p class="menu-price">¥5,500〜</p></div>
+        <div class="menu-row"><div><p class="menu-name">カット + カラー</p><p class="menu-note">フルカラー込み</p></div><p class="menu-price">¥12,000〜</p></div>
+        <div class="menu-row"><div><p class="menu-name">カット + パーマ</p><p class="menu-note">デジタルパーマ対応</p></div><p class="menu-price">¥14,000〜</p></div>
+        <div class="menu-row"><div><p class="menu-name">前髪カット</p><p class="menu-note">前髪のみの調整</p></div><p class="menu-price">¥1,100〜</p></div>
+        <div class="menu-row"><div><p class="menu-name">キッズカット</p><p class="menu-note">小学生以下</p></div><p class="menu-price">¥3,300〜</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <p class="sec-label" style="color:var(--light-accent)">Booking</p>
+      <h2 class="sec-title">オンライン予約</h2>
+      <div class="booking-inner">
+        <div class="booking-form">
+          <h3>予約フォーム</h3>
+          <div class="form-group"><label>お名前</label><input type="text" placeholder="山田 花子"></div>
+          <div class="form-group"><label>電話番号</label><input type="tel" placeholder="090-XXXX-XXXX"></div>
+          <div class="form-group"><label>希望日</label><input type="date"></div>
+          <div class="form-group"><label>希望時間</label><select><option>10:00</option><option>11:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option></select></div>
+          <div class="form-group"><label>メニュー</label><select><option>カット</option><option>カット+カラー</option><option>カット+パーマ</option><option>カラーのみ</option><option>その他</option></select></div>
+          <button class="btn-book">予約を確定する</button>
+        </div>
+        <div class="booking-info">
+          <h3>サロン情報</h3>
+          <div class="info-row"><strong>住所</strong>大阪府大阪市中央区心斎橋X-X-X</div>
+          <div class="info-row"><strong>TEL</strong>06-XXXX-XXXX</div>
+          <div class="info-row"><strong>営業時間</strong>10:00〜20:00</div>
+          <div class="info-row"><strong>定休日</strong>毎週火曜日</div>
+          <div class="stylist-card"><div class="stylist-avatar">💇</div><div><p class="stylist-name">Kazuki（田中 一樹）</p><p class="stylist-title">代表スタイリスト / 経験12年</p></div></div>
+          <div class="stylist-card"><div class="stylist-avatar">💇‍♀️</div><div><p class="stylist-name">Saki（佐々木 咲）</p><p class="stylist-title">スタイリスト / 経験7年</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer><p class="footer-logo">ATELIER KAZE</p><p>〒542-0085 大阪府大阪市中央区心斎橋X-X-X</p><p style="margin-top:8px">© 2024 Atelier KAZE. All Rights Reserved.</p></footer>
+  <div class="sample-banner">⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。</div>
+</body>
+</html>
