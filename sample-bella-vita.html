@@ -3,152 +3,503 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bella Vita | 本格イタリアンレストラン</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>La Bella Vita | 本格イタリアンレストラン</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --red: #c0392b; --dark-red: #922b21; --cream: #fdf6ec; --gold: #c9a84c; --text: #2c2c2c; }
-    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: #fff; }
+    :root {
+      --red: #b82a1e;
+      --dark: #140a03;
+      --cream: #fdf6ec;
+      --gold: #c9a446;
+      --text: #1e1209;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
-    header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; border-bottom: 1px solid #eee; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--red); letter-spacing: 0.05em; }
-    nav a { margin-left: 28px; font-size: 13px; color: #555; }
-    nav a:hover { color: var(--red); }
-    .hero { min-height: 100vh; background: linear-gradient(135deg, #1a0a00 0%, #3d1205 50%, #6b2014 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px 60px; position: relative; overflow: hidden; }
-    .hero-inner { position: relative; }
-    .hero-badge { display: inline-block; background: var(--gold); color: #fff; font-size: 11px; letter-spacing: 0.15em; padding: 5px 16px; border-radius: 2px; margin-bottom: 24px; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 7vw, 80px); color: #fff; line-height: 1.15; margin-bottom: 20px; }
-    .hero h1 em { color: var(--gold); font-style: italic; }
-    .hero p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.8; margin-bottom: 40px; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { background: var(--red); color: #fff; padding: 14px 36px; border-radius: 4px; font-size: 15px; font-weight: 700; transition: background 0.2s; }
-    .btn-primary:hover { background: var(--dark-red); }
-    .btn-outline { border: 1px solid rgba(255,255,255,0.5); color: #fff; padding: 14px 36px; border-radius: 4px; font-size: 15px; }
-    section { padding: 80px 20px; }
-    .container { max-width: 1000px; margin: 0 auto; }
-    .section-label { font-size: 11px; letter-spacing: 0.2em; color: var(--red); text-transform: uppercase; margin-bottom: 12px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
-    .section-desc { color: #666; font-size: 15px; line-height: 1.9; max-width: 580px; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(20, 10, 3, 0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,164,70,0.2);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold); letter-spacing: 0.08em; }
+    .logo span { font-style: italic; }
+    nav a { margin-left: 32px; font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .nav-rsv { border: 1px solid var(--gold); color: var(--gold) !important; padding: 7px 18px; border-radius: 2px; }
+    .nav-rsv:hover { background: var(--gold); color: var(--dark) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(160deg, #2a0e06 0%, #5c1f0e 50%, #8b2e14 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--dark) 100%);
+    }
+    .hero-emoji {
+      font-size: 140px;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+      position: relative; z-index: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero-text {
+      display: flex; align-items: center; padding: 120px 64px 80px 40px;
+    }
+    .hero-text-inner {}
+    .hero-eyebrow {
+      font-size: 10px; letter-spacing: 0.4em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 4.5vw, 64px);
+      color: #fff; line-height: 1.15;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .hero h1 em {
+      display: block; color: var(--gold); font-style: italic; font-weight: 400;
+      font-size: clamp(28px, 3vw, 44px);
+    }
+    .hero-divider { width: 40px; height: 1px; background: var(--gold); margin: 28px 0; }
+    .hero p { color: rgba(255,255,255,0.65); font-size: 14px; line-height: 2; margin-bottom: 40px; max-width: 360px; }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: 15px 40px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; border-radius: 2px; display: inline-block; transition: all 0.2s; }
+    .btn-gold:hover { background: #b8902e; }
+    .btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); padding: 15px 32px; font-size: 13px; letter-spacing: 0.05em; border-radius: 2px; display: inline-block; margin-left: 12px; transition: all 0.2s; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.3); font-size: 10px; letter-spacing: 0.2em;
+      text-align: center; z-index: 10;
+    }
+    .scroll-hint::after {
+      content: ''; display: block; width: 1px; height: 40px;
+      background: rgba(255,255,255,0.2); margin: 8px auto 0;
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── CONCEPT (alternating) ─── */
     .concept { background: var(--cream); }
-    .concept-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .concept-image { aspect-ratio: 4/3; background: linear-gradient(135deg, #8b2a14, #c0392b); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
-    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-    .menu-card { background: var(--cream); border-radius: 8px; overflow: hidden; }
-    .menu-card-img { aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center; font-size: 56px; }
-    .menu-card-img.pasta { background: linear-gradient(135deg, #8b2a14, #c0392b); }
-    .menu-card-img.pizza { background: linear-gradient(135deg, #c0711a, #e67e22); }
-    .menu-card-img.dolce { background: linear-gradient(135deg, #7d3c98, #9b59b6); }
-    .menu-card-body { padding: 20px; }
-    .menu-card-body h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 8px; }
-    .menu-card-body p { font-size: 13px; color: #666; line-height: 1.7; }
-    .price { font-size: 14px; color: var(--red); font-weight: 700; margin-top: 10px; }
-    .voice { background: #1a0a00; color: #fff; }
-    .voice .section-title { color: #fff; }
-    .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-    .voice-card { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 24px; }
-    .stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
-    .voice-card p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.8); margin-bottom: 14px; }
-    .voice-name { font-size: 12px; color: rgba(255,255,255,0.5); }
-    .reservation { background: var(--cream); }
-    .res-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .res-form { background: #fff; border-radius: 8px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-    .res-form h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 24px; }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 12px; color: #777; margin-bottom: 6px; }
-    .form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; font-family: inherit; }
-    .res-form .btn-primary { width: 100%; cursor: pointer; border: none; }
-    .res-info h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 20px; }
-    .info-list { list-style: none; }
-    .info-list li { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
-    .info-list li strong { min-width: 80px; color: var(--red); }
-    footer { background: #1a0a00; color: rgba(255,255,255,0.5); text-align: center; padding: 32px 20px; font-size: 12px; }
-    footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold); margin-bottom: 8px; }
-    .sample-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(108,99,255,0.92); color: #fff; text-align: center; padding: 10px; font-size: 13px; backdrop-filter: blur(4px); z-index: 999; }
+    .concept-block {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+    .concept-block + .concept-block { border-top: 1px solid #e8ddd0; }
+    .concept-block.reverse { direction: rtl; }
+    .concept-block.reverse > * { direction: ltr; }
+    .concept-img {
+      background: linear-gradient(135deg, #2a0e06, #7a2a10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 100px; min-height: 400px;
+    }
+    .concept-img.ci2 { background: linear-gradient(135deg, #4a2808, #c06030); }
+    .concept-body {
+      padding: 72px 64px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .concept-num {
+      font-family: 'Playfair Display', serif; font-size: 80px; line-height: 1;
+      color: rgba(184,42,30,0.08); margin-bottom: -20px; font-weight: 700;
+    }
+    .concept-label { font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    .concept-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 36px); line-height: 1.4; margin-bottom: 20px; font-weight: 400; }
+    .concept-title em { color: var(--red); font-style: italic; }
+    .concept-text { font-size: 14px; line-height: 2.1; color: #5a4030; max-width: 400px; }
+
+    /* ─── MENU ─── */
+    .menu-section { padding: 100px 20px; background: var(--dark); }
+    .menu-container { max-width: 960px; margin: 0 auto; }
+    .menu-header { text-align: center; margin-bottom: 64px; }
+    .menu-header .label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    .menu-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); color: #fff; line-height: 1.2; }
+    .menu-header h2 em { color: var(--gold); font-style: italic; }
+    .menu-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; }
+    .menu-category { }
+    .menu-cat-title {
+      font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold);
+      font-style: italic; border-bottom: 1px solid rgba(201,164,70,0.3);
+      padding-bottom: 12px; margin-bottom: 24px; letter-spacing: 0.05em;
+    }
+    .menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .menu-item:last-child { border-bottom: none; }
+    .mi-left { flex: 1; }
+    .mi-name { font-size: 14px; color: #fff; margin-bottom: 3px; }
+    .mi-desc { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .mi-price { font-size: 14px; color: var(--gold); font-weight: 700; white-space: nowrap; margin-left: 16px; }
+
+    /* ─── VOICE ─── */
+    .voice-section { padding: 100px 20px; background: #fff; }
+    .voice-container { max-width: 960px; margin: 0 auto; }
+    .voice-header { text-align: center; margin-bottom: 56px; }
+    .voice-header .label { font-size: 10px; letter-spacing: 0.4em; color: var(--red); text-transform: uppercase; margin-bottom: 14px; }
+    .voice-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.3; }
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .voice-card {
+      background: var(--cream); border-radius: 4px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .voice-stars { color: var(--gold); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+    .voice-text { font-size: 13px; line-height: 2; color: #5a4030; margin-bottom: 20px; }
+    .voice-author { font-size: 12px; color: #999; padding-top: 16px; border-top: 1px solid #e8ddd0; }
+    .voice-author strong { display: block; color: var(--text); font-size: 13px; margin-bottom: 2px; }
+
+    /* ─── RESERVATION ─── */
+    .rsv-section {
+      padding: 100px 20px;
+      background: linear-gradient(160deg, #1a0a03 0%, #3d1205 100%);
+      position: relative; overflow: hidden;
+    }
+    .rsv-section::before {
+      content: 'RESERVAZIONE';
+      position: absolute; bottom: -20px; right: -20px;
+      font-family: 'Playfair Display', serif; font-size: 180px; font-weight: 700;
+      color: rgba(255,255,255,0.025); line-height: 1; white-space: nowrap;
+      pointer-events: none;
+    }
+    .rsv-container { max-width: 680px; margin: 0 auto; text-align: center; position: relative; }
+    .rsv-container .label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    .rsv-container h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); color: #fff; margin-bottom: 16px; }
+    .rsv-container h2 em { color: var(--gold); font-style: italic; }
+    .rsv-container p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 2; margin-bottom: 48px; }
+    .rsv-form { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,164,70,0.2); border-radius: 4px; padding: 40px; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 0; }
+    .form-group label { display: block; font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 8px; letter-spacing: 0.08em; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 12px 14px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2px; font-size: 14px; color: #fff; font-family: inherit;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold); }
+    .form-group select option { background: #1a0a03; }
+    .form-submit { width: 100%; margin-top: 24px; padding: 15px; background: var(--gold); border: none; color: var(--dark); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; border-radius: 2px; cursor: pointer; transition: background 0.2s; }
+    .form-submit:hover { background: #b8902e; }
+
+    /* ─── ACCESS ─── */
+    .access-section { padding: 88px 20px; background: var(--cream); }
+    .access-container { max-width: 960px; margin: 0 auto; }
+    .access-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .access-map {
+      aspect-ratio: 4/3; border-radius: 4px;
+      background: linear-gradient(135deg, #c8b898, #e8d8c0);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px;
+    }
+    .access-map-icon { font-size: 56px; }
+    .access-map-text { font-size: 12px; color: #888; letter-spacing: 0.1em; }
+    .access-info h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 8px; font-weight: 400; }
+    .access-info h3 em { color: var(--red); font-style: italic; }
+    .access-subtitle { font-size: 12px; color: #999; margin-bottom: 32px; letter-spacing: 0.1em; }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid #e0d4c4; }
+    .info-table th { width: 88px; padding: 14px 0; font-size: 12px; color: var(--red); font-weight: 700; text-align: left; vertical-align: top; }
+    .info-table td { padding: 14px 0; font-size: 13px; color: #5a4030; line-height: 1.7; }
+    .sns-area { margin-top: 28px; display: flex; gap: 10px; }
+    .sns-btn { padding: 9px 20px; border-radius: 20px; font-size: 12px; border: 1px solid #ccc; color: #555; transition: all 0.2s; }
+    .sns-btn:hover { background: #f0e8dc; border-color: #b8a08a; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); font-style: italic; margin-bottom: 8px; }
+    .footer-tag { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; margin-bottom: 20px; text-transform: uppercase; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+    /* ─── SAMPLE BANNER ─── */
+    .sample-banner {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(108,99,255,0.92); color: #fff;
+      text-align: center; padding: 10px; font-size: 13px;
+      backdrop-filter: blur(4px); z-index: 999;
+    }
     .sample-banner a { color: #c7c3ff; text-decoration: underline; }
-    @media (max-width: 768px) { header { padding: 0 20px; } nav { display: none; } .concept-inner, .res-inner { grid-template-columns: 1fr; } .menu-grid, .voices-grid { grid-template-columns: 1fr; } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      header { padding: 0 16px; }
+      nav { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 300px; }
+      .hero-emoji { font-size: 90px; }
+      .hero-text { padding: 48px 24px; }
+      .concept-block { grid-template-columns: 1fr; }
+      .concept-block.reverse { direction: ltr; }
+      .concept-body { padding: 48px 24px; }
+      .concept-img { min-height: 240px; }
+      .menu-cols { grid-template-columns: 1fr; gap: 32px; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .access-inner { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">Bella Vita</div>
-    <nav><a href="#concept">コンセプト</a><a href="#menu">メニュー</a><a href="#voice">お客様の声</a><a href="#reservation">予約</a></nav>
+    <div class="logo"><span>La Bella</span> Vita</div>
+    <nav>
+      <a href="#concept">コンセプト</a>
+      <a href="#menu">メニュー</a>
+      <a href="#voice">お客様の声</a>
+      <a href="#reservation">ご予約</a>
+      <a href="#reservation" class="nav-rsv">予約する</a>
+    </nav>
   </header>
+
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-badge">SINCE 2018 · FUKUOKA</div>
-      <h1>本物の<em>イタリア</em>を、<br>あなたの食卓へ。</h1>
-      <p>厳選素材と伝統のレシピで贈る、<br>本格イタリアンの一夜をお楽しみください。</p>
-      <div class="hero-btns">
-        <a href="#reservation" class="btn-primary">今すぐ予約する</a>
-        <a href="#menu" class="btn-outline">メニューを見る</a>
+    <div class="hero-visual">
+      <div class="hero-emoji">🍝</div>
+    </div>
+    <div class="hero-text">
+      <div class="hero-text-inner">
+        <p class="hero-eyebrow">Ristorante Italiano · Tokyo · Since 2018</p>
+        <h1>本物の<br>イタリアを、<br><em>食卓へ。</em></h1>
+        <div class="hero-divider"></div>
+        <p>イタリア各地から取り寄せた食材と、<br>シェフが現地で学んだ技法だけを使う。<br>ここにあるのは、妥協なき一皿。</p>
+        <div>
+          <a href="#reservation" class="btn-gold">ご予約はこちら</a>
+          <a href="#menu" class="btn-ghost">メニューを見る</a>
+        </div>
       </div>
     </div>
+    <p class="scroll-hint">SCROLL</p>
   </section>
+
+  <!-- CONCEPT -->
   <section class="concept" id="concept">
-    <div class="container">
-      <div class="concept-inner">
-        <div class="concept-image">🍝</div>
-        <div class="concept-text">
-          <p class="section-label">Our Concept</p>
-          <h2 class="section-title">素材の力を、<br>シンプルに活かす。</h2>
-          <p class="section-desc">イタリア各地を旅したシェフが厳選した食材を、伝統的な調理法でお届けします。余計な手を加えず、素材本来の旨みを最大限に引き出す—それが Bella Vita のフィロソフィーです。</p>
+    <div class="concept-block">
+      <div class="concept-img">🫒</div>
+      <div class="concept-body">
+        <div class="concept-num">01</div>
+        <p class="concept-label">Ingredients</p>
+        <h2 class="concept-title">本場から届く、<br><em>生きた素材</em>たち。</h2>
+        <p class="concept-text">パルマ産プロシュート、シチリアのオリーブオイル、アルバのトリュフ。素材ひとつひとつに産地と生産者がある。鮮度と品質を最優先に、毎週直輸入で仕入れています。</p>
+      </div>
+    </div>
+    <div class="concept-block reverse">
+      <div class="concept-img ci2">👨‍🍳</div>
+      <div class="concept-body">
+        <div class="concept-num">02</div>
+        <p class="concept-label">Chef</p>
+        <h2 class="concept-title">フィレンツェで磨いた、<br><em>10年の技。</em></h2>
+        <p class="concept-text">シェフのMassimoは、フィレンツェの名店「Osteria del Sole」で10年間修業。伝統と革新を融合させた彼の料理は、食べる人の記憶に残ります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="menu-container">
+      <div class="menu-header">
+        <p class="label">— Menu —</p>
+        <h2>今日の<em>おすすめ</em></h2>
+      </div>
+      <div class="menu-cols">
+        <div class="menu-category">
+          <p class="menu-cat-title">Antipasto &amp; Pasta</p>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">カルパッチョ ディ マンゾ</p>
+              <p class="mi-desc">牛ヒレ肉の薄切り・トリュフ塩</p>
+            </div>
+            <p class="mi-price">¥1,680</p>
+          </div>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">ブッラータとトマトのサラダ</p>
+              <p class="mi-desc">南イタリア産ブッラータ・バジル</p>
+            </div>
+            <p class="mi-price">¥1,480</p>
+          </div>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">カルボナーラ 原典のレシピ</p>
+              <p class="mi-desc">グアンチャーレ・ペコリーノ・卵黄</p>
+            </div>
+            <p class="mi-price">¥2,200</p>
+          </div>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">トリュフのタリオリーニ</p>
+              <p class="mi-desc">生トリュフ・バター・パルミジャーノ</p>
+            </div>
+            <p class="mi-price">¥3,200</p>
+          </div>
+        </div>
+        <div class="menu-category">
+          <p class="menu-cat-title">Secondo &amp; Dolce</p>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">魚介のアクアパッツァ</p>
+              <p class="mi-desc">本日の鮮魚・オリーブ・ケッパー</p>
+            </div>
+            <p class="mi-price">¥3,600</p>
+          </div>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">仔羊のロースト　ロズマリーソース</p>
+              <p class="mi-desc">北海道産ラム・グレモラータ</p>
+            </div>
+            <p class="mi-price">¥4,200</p>
+          </div>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">ティラミス　クラシコ</p>
+              <p class="mi-desc">マスカルポーネ・エスプレッソ</p>
+            </div>
+            <p class="mi-price">¥980</p>
+          </div>
+          <div class="menu-item">
+            <div class="mi-left">
+              <p class="mi-name">パンナコッタ　フルーツソース</p>
+              <p class="mi-desc">本日のフルーツ・ミント</p>
+            </div>
+            <p class="mi-price">¥820</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <section id="menu">
-    <div class="container">
-      <p class="section-label">Menu</p>
-      <h2 class="section-title">人気メニュー</h2>
-      <div class="menu-grid">
-        <div class="menu-card"><div class="menu-card-img pasta">🍝</div><div class="menu-card-body"><h3>カルボナーラ</h3><p>グアンチャーレと卵黄のクリームソース。濃厚でありながら後味すっきり。</p><p class="price">¥1,680</p></div></div>
-        <div class="menu-card"><div class="menu-card-img pizza">🍕</div><div class="menu-card-body"><h3>マルゲリータ</h3><p>薪窯で焼き上げたナポリピッツァ。モッツァレラとバジルの香りが広がる。</p><p class="price">¥1,480</p></div></div>
-        <div class="menu-card"><div class="menu-card-img dolce">🍮</div><div class="menu-card-body"><h3>ティラミス</h3><p>マスカルポーネをたっぷり使った自家製ティラミス。食後の一皿に。</p><p class="price">¥680</p></div></div>
+
+  <!-- VOICE -->
+  <section class="voice-section" id="voice">
+    <div class="voice-container">
+      <div class="voice-header">
+        <p class="label">Customer Voice</p>
+        <h2>お客様から<br>いただいた声</h2>
       </div>
-    </div>
-  </section>
-  <section class="voice" id="voice">
-    <div class="container">
-      <p class="section-label" style="color:var(--gold)">Customer Voice</p>
-      <h2 class="section-title">お客様の声</h2>
-      <div class="voices-grid">
-        <div class="voice-card"><div class="stars">★★★★★</div><p>記念日ディナーで利用しました。雰囲気・料理・サービス全て完璧で、また絶対に来たいと思います！</p><p class="voice-name">30代・女性</p></div>
-        <div class="voice-card"><div class="stars">★★★★★</div><p>パスタが本当においしくて感動しました。イタリアで食べたあの味がここで楽しめるとは思いませんでした。</p><p class="voice-name">40代・男性</p></div>
-        <div class="voice-card"><div class="stars">★★★★★</div><p>接客が丁寧で料理も絶品。誕生日サプライズも快く対応いただけてとても嬉しかったです。</p><p class="voice-name">20代・女性</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="reservation" id="reservation">
-    <div class="container">
-      <div class="res-inner">
-        <div class="res-info">
-          <p class="section-label">Reservation</p>
-          <h2 class="section-title">ご予約</h2>
-          <p class="section-desc" style="margin-bottom:32px">ご予約はオンラインまたはお電話にて承っております。コース料理のご予約はお早めに。</p>
-          <ul class="info-list">
-            <li><strong>営業時間</strong>18:00 〜 23:00（L.O. 22:00）</li>
-            <li><strong>定休日</strong>毎週月曜日</li>
-            <li><strong>席数</strong>40席（個室あり）</li>
-            <li><strong>TEL</strong>092-XXX-XXXX</li>
-          </ul>
+      <div class="voice-grid">
+        <div class="voice-card">
+          <p class="voice-stars">★★★★★</p>
+          <p class="voice-text">カルボナーラが今まで食べてきた中で一番本格的でした。チーズと卵黄だけで作るあの濃厚さは他では食べられません。</p>
+          <p class="voice-author"><strong>田中 美咲さん</strong>記念日ディナーにて</p>
         </div>
-        <div class="res-form">
-          <h3>オンライン予約</h3>
+        <div class="voice-card">
+          <p class="voice-stars">★★★★★</p>
+          <p class="voice-text">シェフが直接テーブルに来てくださり、料理のストーリーを話してくれました。食事がこんなに豊かな体験になるとは思いませんでした。</p>
+          <p class="voice-author"><strong>佐藤 健一さん</strong>接待でのご利用</p>
+        </div>
+        <div class="voice-card">
+          <p class="voice-stars">★★★★★</p>
+          <p class="voice-text">ワインのセレクトも素晴らしく、料理との相性を丁寧に説明してくれました。イタリアに行った気分で最高の夜でした。</p>
+          <p class="voice-author"><strong>山田 夫妻</strong>結婚記念日にて</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="rsv-section" id="reservation">
+    <div class="rsv-container">
+      <p class="label">Reservation</p>
+      <h2>ご予約は<br><em>こちらから</em></h2>
+      <p>特別なひとときのために、席をご用意いたします。<br>コース料理やアレルギーのご要望もお気軽に。</p>
+      <div class="rsv-form">
+        <div class="form-row">
           <div class="form-group"><label>お名前</label><input type="text" placeholder="山田 花子"></div>
-          <div class="form-group"><label>ご来店日</label><input type="date"></div>
-          <div class="form-group"><label>ご来店時間</label><select><option>18:00</option><option>19:00</option><option>20:00</option></select></div>
-          <div class="form-group"><label>人数</label><select><option>1名</option><option>2名</option><option>3名</option><option>4名</option><option>5名以上</option></select></div>
           <div class="form-group"><label>電話番号</label><input type="tel" placeholder="090-XXXX-XXXX"></div>
-          <button class="btn-primary" style="margin-top:8px">予約を確定する</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>ご希望日</label><input type="date"></div>
+          <div class="form-group"><label>時間帯</label>
+            <select>
+              <option>18:00</option><option>18:30</option><option>19:00</option>
+              <option>19:30</option><option>20:00</option><option>20:30</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>人数</label>
+            <select>
+              <option>1名</option><option>2名</option><option>3名</option>
+              <option>4名</option><option>5〜8名</option><option>9名以上</option>
+            </select>
+          </div>
+          <div class="form-group"><label>コース</label>
+            <select>
+              <option>アラカルト</option><option>ランチコース ¥3,500</option>
+              <option>ディナーコース A ¥8,000</option><option>ディナーコース B ¥12,000</option>
+            </select>
+          </div>
+        </div>
+        <button class="form-submit">予約を確定する</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS -->
+  <section class="access-section" id="access">
+    <div class="access-container">
+      <div class="access-inner">
+        <div class="access-map">
+          <div class="access-map-icon">📍</div>
+          <p class="access-map-text">Google Maps</p>
+        </div>
+        <div class="access-info">
+          <h3>La Bella <em>Vita</em></h3>
+          <p class="access-subtitle">RISTORANTE ITALIANO · TOKYO</p>
+          <table class="info-table">
+            <tr><th>住所</th><td>東京都港区西麻布X-X-X<br>ビル地下1F</td></tr>
+            <tr><th>最寄駅</th><td>六本木駅より徒歩8分<br>広尾駅より徒歩10分</td></tr>
+            <tr><th>営業時間</th><td>ランチ 12:00〜14:30 (L.O.)<br>ディナー 18:00〜22:00 (L.O.)</td></tr>
+            <tr><th>定休日</th><td>毎週月曜日</td></tr>
+            <tr><th>TEL</th><td>03-XXXX-XXXX</td></tr>
+          </table>
+          <div class="sns-area">
+            <a href="#" class="sns-btn">📷 Instagram</a>
+            <a href="#" class="sns-btn">🍴 食べログ</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
   <footer>
-    <p class="footer-logo">Bella Vita</p>
-    <p>〒810-0001 福岡県福岡市中央区天神X-X-X</p>
-    <p style="margin-top:8px">© 2024 Bella Vita. All Rights Reserved.</p>
+    <p class="footer-logo">La Bella Vita</p>
+    <p class="footer-tag">Ristorante Italiano · Tokyo</p>
+    <p class="footer-copy">© 2024 La Bella Vita. All Rights Reserved.</p>
   </footer>
-  <div class="sample-banner">⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。</div>
+
+  <div class="sample-banner">
+    ⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
+  </div>
+
 </body>
 </html>
