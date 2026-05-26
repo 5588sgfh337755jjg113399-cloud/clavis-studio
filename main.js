@@ -80,18 +80,42 @@ revealElements.forEach(el => {
 // ---- Contact form (demo) ----
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = '送信完了！ありがとうございました 🎉';
-    btn.style.background = '#22c55e';
+    const originalText = btn.textContent;
+
+    btn.textContent = '送信中...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = '送信する';
-      btn.style.background = '';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        btn.textContent = '送信完了！ありがとうございました 🎉';
+        btn.style.background = '#22c55e';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        throw new Error('server error');
+      }
+    } catch {
+      btn.textContent = '送信に失敗しました。再度お試しください。';
+      btn.style.background = '#ef4444';
       btn.disabled = false;
-      form.reset();
-    }, 3000);
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 3000);
+    }
   });
 }
 
