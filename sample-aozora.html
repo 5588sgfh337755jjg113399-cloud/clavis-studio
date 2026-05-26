@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>あおぞら法務 | 行政書士事務所</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #1a3a5c; --blue: #2962a8; --sky: #4a90d9; --light: #eef4fb; --text: #2c3e50; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: #fff; }
+    a { text-decoration: none; color: inherit; }
+    header { position: fixed; top: 0; width: 100%; z-index: 100; background: #fff; border-bottom: 3px solid var(--blue); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { width: 38px; height: 38px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
+    .logo-text .main { font-size: 18px; color: var(--navy); font-weight: 700; font-family: 'Noto Serif JP', serif; }
+    .logo-text .sub { font-size: 10px; color: #888; }
+    nav a { margin-left: 24px; font-size: 13px; color: #555; }
+    nav a:hover { color: var(--blue); }
+    .hero { min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%); display: flex; align-items: center; padding: 80px 20px 40px; }
+    .hero-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+    .hero-text .badge { display: inline-block; background: rgba(255,255,255,0.2); color: #fff; font-size: 11px; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 2px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.3); }
+    .hero-text h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(24px, 3vw, 40px); color: #fff; line-height: 1.6; margin-bottom: 20px; }
+    .hero-text p { color: rgba(255,255,255,0.8); font-size: 14px; line-height: 2; margin-bottom: 36px; }
+    .btn-white { background: #fff; color: var(--blue); padding: 12px 32px; border-radius: 4px; font-size: 14px; font-weight: 700; display: inline-block; margin-right: 10px; }
+    .btn-outline-white { border: 1px solid rgba(255,255,255,0.6); color: #fff; padding: 12px 28px; border-radius: 4px; font-size: 14px; display: inline-block; }
+    .hero-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border-radius: 8px; padding: 28px; border: 1px solid rgba(255,255,255,0.25); }
+    .hero-card h3 { color: #fff; font-size: 15px; margin-bottom: 16px; font-weight: 700; }
+    .hero-card-list { list-style: none; }
+    .hero-card-list li { color: rgba(255,255,255,0.85); font-size: 13px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    section { padding: 80px 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .sec-label { font-size: 11px; letter-spacing: 0.2em; color: var(--sky); text-transform: uppercase; margin-bottom: 10px; }
+    .sec-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3vw, 34px); margin-bottom: 16px; }
+    .features { background: var(--light); }
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .feat-card { background: #fff; border-radius: 6px; padding: 28px; border-top: 3px solid var(--blue); }
+    .feat-icon { font-size: 32px; margin-bottom: 14px; }
+    .feat-card h3 { font-family: 'Noto Serif JP', serif; font-size: 17px; margin-bottom: 10px; color: var(--navy); }
+    .feat-card p { font-size: 13px; color: #666; line-height: 1.8; }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+    .service-item { display: flex; align-items: flex-start; gap: 14px; padding: 20px; border: 1px solid #dde6f0; border-radius: 4px; }
+    .service-icon { width: 40px; height: 40px; background: var(--light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .service-item h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .service-item p { font-size: 12px; color: #777; line-height: 1.7; }
+    .fee { background: var(--navy); color: #fff; }
+    .fee .sec-title { color: #fff; }
+    .fee-note { color: rgba(255,255,255,0.6); font-size: 13px; margin-bottom: 32px; }
+    .fee-table { width: 100%; border-collapse: collapse; }
+    .fee-table th, .fee-table td { padding: 14px 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+    .fee-table th { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); font-size: 12px; }
+    .fee-table td { color: rgba(255,255,255,0.9); }
+    .fee-table .price-cell { color: #7ec8e3; font-weight: 700; }
+    .contact-section { background: var(--light); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-form { background: #fff; padding: 36px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .contact-form h3 { font-family: 'Noto Serif JP', serif; font-size: 20px; margin-bottom: 24px; color: var(--navy); }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 12px; color: #777; margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #cdd8e8; border-radius: 4px; font-size: 13px; font-family: inherit; }
+    .form-group textarea { height: 80px; resize: vertical; }
+    .btn-blue { background: var(--blue); color: #fff; padding: 12px 32px; border-radius: 4px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; width: 100%; margin-top: 8px; }
+    .contact-info h3 { font-family: 'Noto Serif JP', serif; font-size: 20px; color: var(--navy); margin-bottom: 20px; }
+    .info-row { display: flex; gap: 10px; margin-bottom: 14px; font-size: 14px; }
+    .info-row strong { color: var(--blue); min-width: 70px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 28px 20px; font-size: 12px; }
+    footer .footer-logo { font-family: 'Noto Serif JP', serif; font-size: 18px; color: #fff; margin-bottom: 6px; }
+    .sample-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(108,99,255,0.92); color: #fff; text-align: center; padding: 10px; font-size: 13px; backdrop-filter: blur(4px); z-index: 999; }
+    .sample-banner a { color: #c7c3ff; text-decoration: underline; }
+    @media (max-width: 768px) { header { padding: 0 16px; } nav { display: none; } .hero-inner { grid-template-columns: 1fr; } .feat-grid, .services-grid, .contact-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><div class="logo-icon">⚖</div><div class="logo-text"><div class="main">あおぞら法務</div><div class="sub">行政書士事務所</div></div></div>
+    <nav><a href="#features">選ばれる理由</a><a href="#services">業務案内</a><a href="#fee">料金</a><a href="#contact">お問い合わせ</a></nav>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="badge">行政書士 登録番号 第XXXXXX号</div>
+        <h1>あなたの大切な手続きを、<br>確実に・丁寧に。</h1>
+        <p>許認可申請から相続・遺言、在留資格まで。<br>複雑な行政手続きをワンストップでサポートします。</p>
+        <a href="#contact" class="btn-white">無料相談を予約する</a>
+        <a href="#services" class="btn-outline-white">業務案内を見る</a>
+      </div>
+      <div class="hero-card">
+        <h3>主な取扱業務</h3>
+        <ul class="hero-card-list">
+          <li>建設業許可・各種許認可申請</li>
+          <li>相続・遺言書作成サポート</li>
+          <li>在留資格（ビザ）申請</li>
+          <li>会社設立・定款作成</li>
+          <li>農地転用・開発許可</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="features" id="features">
+    <div class="container">
+      <p class="sec-label">Why Choose Us</p>
+      <h2 class="sec-title">あおぞら法務が選ばれる3つの理由</h2>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="feat-icon">🏆</div><h3>実績500件以上</h3><p>開業10年以上、様々な業種・案件を手掛けてきた豊富な実績があります。</p></div>
+        <div class="feat-card"><div class="feat-icon">⚡</div><h3>スピード対応</h3><p>お問い合わせ翌営業日以内にご連絡。急ぎの案件にも対応いたします。</p></div>
+        <div class="feat-card"><div class="feat-icon">💬</div><h3>わかりやすい説明</h3><p>難しい法律用語を使わず、お客様の目線で丁寧にご説明します。</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="services">
+    <div class="container">
+      <p class="sec-label">Services</p>
+      <h2 class="sec-title">業務案内</h2>
+      <div class="services-grid">
+        <div class="service-item"><div class="service-icon">🏗</div><div><h4>建設業許可・更新</h4><p>新規取得から更新・業種追加まで。煩雑な書類作成をサポートします。</p></div></div>
+        <div class="service-item"><div class="service-icon">📝</div><div><h4>相続・遺言</h4><p>遺産分割協議書の作成・相続人調査など、相続に関する各種手続き。</p></div></div>
+        <div class="service-item"><div class="service-icon">✈️</div><div><h4>在留資格申請</h4><p>就労ビザ・帰化申請・永住許可など、外国人に関する各種申請。</p></div></div>
+        <div class="service-item"><div class="service-icon">🏢</div><div><h4>会社設立</h4><p>定款作成から設立登記の司法書士紹介まで、ワンストップでサポート。</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="fee" id="fee">
+    <div class="container">
+      <p class="sec-label" style="color:#7ec8e3">Fee</p>
+      <h2 class="sec-title">料金案内</h2>
+      <p class="fee-note">※ 別途、役所への申請手数料（実費）が必要な場合があります。</p>
+      <table class="fee-table">
+        <thead><tr><th>業務内容</th><th>報酬額（税込）</th></tr></thead>
+        <tbody>
+          <tr><td>建設業許可申請（新規・知事）</td><td class="price-cell">¥110,000〜</td></tr>
+          <tr><td>相続関係説明図・遺産分割協議書</td><td class="price-cell">¥55,000〜</td></tr>
+          <tr><td>在留資格（就労ビザ）申請</td><td class="price-cell">¥88,000〜</td></tr>
+          <tr><td>会社設立（定款作成）</td><td class="price-cell">¥33,000〜</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <p class="sec-label">Contact</p>
+      <h2 class="sec-title">無料相談・お問い合わせ</h2>
+      <div class="contact-inner">
+        <div class="contact-form">
+          <h3>お問い合わせフォーム</h3>
+          <div class="form-group"><label>お名前</label><input type="text" placeholder="山田 太郎"></div>
+          <div class="form-group"><label>電話番号</label><input type="tel" placeholder="090-XXXX-XXXX"></div>
+          <div class="form-group"><label>ご相談内容</label><select><option>建設業許可</option><option>相続・遺言</option><option>在留資格</option><option>会社設立</option><option>その他</option></select></div>
+          <div class="form-group"><label>ご質問・詳細</label><textarea placeholder="ご相談内容をご記入ください"></textarea></div>
+          <button class="btn-blue">送信する</button>
+        </div>
+        <div class="contact-info">
+          <h3>事務所情報</h3>
+          <div class="info-row"><strong>住所</strong>〒530-0001 大阪府大阪市北区梅田X-X-X</div>
+          <div class="info-row"><strong>TEL</strong>06-XXXX-XXXX</div>
+          <div class="info-row"><strong>営業時間</strong>平日 9:00〜18:00</div>
+          <div class="info-row"><strong>定休日</strong>土日祝（事前予約で対応可）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p class="footer-logo">あおぞら法務 行政書士事務所</p>
+    <p>〒530-0001 大阪府大阪市北区梅田X-X-X</p>
+    <p style="margin-top:8px">© 2024 あおぞら法務. All Rights Reserved.</p>
+  </footer>
+  <div class="sample-banner">⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の事務所・人物とは関係ありません。</div>
+</body>
+</html>
