@@ -9,6 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .sample-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(108, 99, 255, 0.85);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+    .work-card__image { position: relative; }
+  </style>
 </head>
 <body>
 
@@ -181,6 +199,7 @@
         <!-- Work 1 -->
         <article class="work-card" data-category="restaurant">
           <div class="work-card__image">
+            <span class="sample-badge">サンプル制作</span>
             <div class="work-card__placeholder work-card__placeholder--restaurant">
               <span>🍝</span>
               <p>イタリアンレストラン</p>
@@ -202,6 +221,7 @@
         <!-- Work 2 -->
         <article class="work-card" data-category="beauty">
           <div class="work-card__image">
+            <span class="sample-badge">サンプル制作</span>
             <div class="work-card__placeholder work-card__placeholder--beauty">
               <span>💆</span>
               <p>エステサロン</p>
@@ -223,6 +243,7 @@
         <!-- Work 3 -->
         <article class="work-card" data-category="corporate">
           <div class="work-card__image">
+            <span class="sample-badge">サンプル制作</span>
             <div class="work-card__placeholder work-card__placeholder--corporate">
               <span>⚖️</span>
               <p>行政書士事務所</p>
@@ -244,6 +265,7 @@
         <!-- Work 4 -->
         <article class="work-card" data-category="beauty">
           <div class="work-card__image">
+            <span class="sample-badge">サンプル制作</span>
             <div class="work-card__placeholder work-card__placeholder--beauty2">
               <span>✂️</span>
               <p>美容室</p>
@@ -265,6 +287,7 @@
         <!-- Work 5 -->
         <article class="work-card" data-category="ec">
           <div class="work-card__image">
+            <span class="sample-badge">サンプル制作</span>
             <div class="work-card__placeholder work-card__placeholder--ec">
               <span>🛍️</span>
               <p>雑貨ECサイト</p>
@@ -286,6 +309,7 @@
         <!-- Work 6 -->
         <article class="work-card" data-category="restaurant">
           <div class="work-card__image">
+            <span class="sample-badge">サンプル制作</span>
             <div class="work-card__placeholder work-card__placeholder--restaurant2">
               <span>☕</span>
               <p>カフェ</p>
