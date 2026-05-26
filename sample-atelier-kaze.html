@@ -1,134 +1,470 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atelier KAZE | 美容室</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATELIER KAZE | Hair Salon Osaka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--charcoal:#1e1e1e;--off-white:#f8f7f5;--accent:#8c7b6b;--light-accent:#d4c9bc;--text:#2d2d2d}
-    body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff}
-    a{text-decoration:none;color:inherit}
-    header{position:fixed;top:0;width:100%;z-index:100;background:rgba(30,30,30,0.95);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px}
-    .logo{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:#fff;letter-spacing:0.25em}
-    nav a{margin-left:24px;font-size:11px;letter-spacing:0.12em;color:rgba(255,255,255,0.6);text-transform:uppercase}
-    nav a:hover{color:#fff}
-    .nav-book{background:var(--accent);color:#fff !important;padding:6px 16px;border-radius:2px}
-    .hero{min-height:100vh;background:var(--charcoal);display:grid;grid-template-columns:1fr 1fr;padding-top:64px}
-    .hero-left{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#2a2a2a,#3d3530);font-size:120px;padding:40px}
-    .hero-right{display:flex;align-items:center;padding:60px 48px}
-    .hero-label{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:24px}
-    .hero-text h1{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(32px,4vw,52px);color:#fff;line-height:1.2;letter-spacing:0.1em;margin-bottom:24px}
-    .hero-text p{color:rgba(255,255,255,0.6);font-size:14px;line-height:2;margin-bottom:36px}
-    .btn-accent{background:var(--accent);color:#fff;padding:13px 32px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;border-radius:2px;display:inline-block;margin-right:12px}
-    .btn-line{border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:13px 28px;font-size:12px;border-radius:2px;display:inline-block}
-    section{padding:88px 20px}
-    .container{max-width:1000px;margin:0 auto}
-    .sec-label{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
-    .sec-title{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(26px,3.5vw,40px);letter-spacing:0.08em;margin-bottom:16px}
-    .about{background:var(--off-white)}
-    .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-    .about-image{aspect-ratio:3/4;background:linear-gradient(160deg,#3d3530,#8c7b6b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:80px}
-    .menu-section{}
-    .menu-items{display:grid;gap:0}
-    .menu-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #f0f0f0}
-    .menu-name{font-size:14px;font-weight:700;margin-bottom:3px}
-    .menu-note{font-size:12px;color:#999}
-    .menu-price{font-size:15px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:20px}
-    .booking-section{background:var(--charcoal);color:#fff}
-    .booking-section .sec-title{color:#fff}
-    .booking-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px}
-    .booking-form{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:32px}
-    .booking-form h3{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:#fff;margin-bottom:24px;letter-spacing:0.1em}
-    .form-group{margin-bottom:14px}
-    .form-group label{display:block;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;letter-spacing:0.08em}
-    .form-group input,.form-group select{width:100%;padding:10px 12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:2px;font-size:13px;color:#fff;font-family:inherit}
-    .form-group select option{background:#1e1e1e}
-    .form-group input::placeholder{color:rgba(255,255,255,0.3)}
-    .btn-book{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:2px;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:8px}
-    .booking-info h3{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:#fff;margin-bottom:20px;letter-spacing:0.1em}
-    .info-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px;color:rgba(255,255,255,0.7)}
-    .info-row strong{color:var(--light-accent);min-width:80px}
-    .stylist-card{display:flex;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:4px;margin-top:10px;align-items:center}
-    .stylist-avatar{width:44px;height:44px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-    .stylist-name{font-size:14px;color:#fff;margin-bottom:2px}
-    .stylist-title{font-size:11px;color:rgba(255,255,255,0.5)}
-    footer{background:#111;color:rgba(255,255,255,0.4);text-align:center;padding:32px 20px;font-size:12px}
-    footer .footer-logo{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;color:rgba(255,255,255,0.8);letter-spacing:0.25em;margin-bottom:8px}
-    .sample-banner{position:fixed;bottom:0;left:0;right:0;background:rgba(108,99,255,0.92);color:#fff;text-align:center;padding:10px;font-size:13px;backdrop-filter:blur(4px);z-index:999}
-    .sample-banner a{color:#c7c3ff;text-decoration:underline}
-    @media(max-width:768px){header{padding:0 16px}nav{display:none}.hero{grid-template-columns:1fr}.hero-left{min-height:200px;font-size:80px}.hero-right{padding:32px 20px}.about-inner,.booking-inner{grid-template-columns:1fr}}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #fafafa;
+      --accent: #c4a882;
+      --accent-dark: #a08060;
+      --mid: #888;
+      --light: #f2f0ed;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--black); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 64px;
+    }
+    .logo { font-family: 'Josefin Sans', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.3em; color: var(--black); }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { padding: 6px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 0.18em; color: var(--mid); text-transform: uppercase; transition: color 0.2s; }
+    nav a:hover { color: var(--black); }
+    .nav-book {
+      background: var(--black); color: var(--white) !important;
+      padding: 9px 20px; letter-spacing: 0.18em; font-size: 11px;
+    }
+    .nav-book:hover { background: var(--accent-dark) !important; }
+
+    /* HERO - TYPOGRAPHIC */
+    .hero {
+      min-height: 100vh; padding-top: 64px;
+      background: var(--white);
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'Josefin Sans', sans-serif; font-weight: 700;
+      font-size: clamp(120px, 20vw, 280px);
+      color: rgba(0,0,0,0.04); letter-spacing: 0.05em;
+      white-space: nowrap; user-select: none; pointer-events: none;
+      line-height: 1;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 64px);
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 40px 80px 72px;
+      border-right: 1px solid rgba(0,0,0,0.08);
+    }
+    .hero-eyebrow {
+      font-family: 'Josefin Sans', sans-serif; font-size: 10px;
+      letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    .hero h1 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(48px, 6vw, 88px);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 48px;
+    }
+    .hero h1 span { display: block; }
+    .hero h1 .thin { font-weight: 200; color: var(--mid); }
+    .hero-desc { font-size: 14px; line-height: 2.2; color: #555; max-width: 400px; margin-bottom: 48px; font-weight: 300; }
+    .hero-cta { display: flex; align-items: center; gap: 24px; }
+    .btn-black { background: var(--black); color: var(--white); padding: 16px 40px; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; display: inline-block; transition: background 0.2s; }
+    .btn-black:hover { background: var(--accent-dark); }
+    .hero-scroll { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--mid); display: flex; align-items: center; gap: 12px; }
+    .hero-scroll-line { width: 40px; height: 1px; background: var(--accent); }
+    .hero-right {
+      display: grid; grid-template-rows: 1fr 1fr;
+      background: var(--black);
+    }
+    .hero-img-top {
+      background: linear-gradient(160deg, #1a1a1a, #3a3028);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 100px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-img-bottom {
+      background: linear-gradient(160deg, #2a2018, #4a3828);
+      display: flex; align-items: flex-end; padding: 32px 40px;
+    }
+    .hero-stat { }
+    .hero-stat-num { font-family: 'Josefin Sans', sans-serif; font-size: 56px; font-weight: 700; color: var(--white); line-height: 1; }
+    .hero-stat-num span { font-size: 24px; font-weight: 200; color: var(--accent); }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.15em; margin-top: 6px; font-family: 'Josefin Sans', sans-serif; }
+
+    /* ABOUT */
+    .about {
+      padding: 120px 72px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      background: var(--white);
+    }
+    .about-visual {
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #1a1a1a 0%, #3a2e20 100%);
+      display: flex; align-items: center; justify-content: center; font-size: 100px;
+      position: relative;
+    }
+    .about-visual::after {
+      content: '';
+      position: absolute; bottom: -16px; right: -16px;
+      width: calc(100% - 32px); height: calc(100% - 32px);
+      border: 1px solid rgba(196,168,130,0.3);
+      pointer-events: none;
+    }
+    .about-text { }
+    .about-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; }
+    .about h2 { font-family: 'Josefin Sans', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.15; margin-bottom: 32px; }
+    .about h2 .thin { font-weight: 200; color: var(--mid); }
+    .about-rule { width: 40px; height: 1px; background: var(--accent); margin-bottom: 28px; }
+    .about p { font-size: 14px; line-height: 2.2; color: #555; margin-bottom: 16px; font-weight: 300; }
+    .about-features { display: flex; gap: 32px; margin-top: 36px; }
+    .about-feature { }
+    .about-feature-num { font-family: 'Josefin Sans', sans-serif; font-size: 28px; font-weight: 700; color: var(--accent); }
+    .about-feature-label { font-size: 11px; color: var(--mid); margin-top: 2px; }
+
+    /* MENU */
+    .menu { padding: 0; background: var(--black); }
+    .menu-header {
+      padding: 80px 72px 56px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .menu-header-left { }
+    .menu-header-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .menu-header h2 { font-family: 'Josefin Sans', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; color: var(--white); line-height: 1.1; }
+    .menu-header h2 .thin { font-weight: 200; color: rgba(255,255,255,0.35); }
+    .menu-tabs { display: flex; gap: 2px; }
+    .menu-tab { padding: 8px 20px; font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s; }
+    .menu-tab.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
+    .menu-tab:hover:not(.active) { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
+    .menu-list { padding: 0 72px 80px; }
+    .menu-item {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: baseline;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.2s;
+    }
+    .menu-item:hover { padding-left: 16px; }
+    .menu-item-left { }
+    .menu-name { font-family: 'Josefin Sans', sans-serif; font-size: 18px; font-weight: 300; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
+    .menu-note { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .menu-price { font-family: 'Josefin Sans', sans-serif; font-size: 18px; color: var(--accent); font-weight: 300; white-space: nowrap; }
+
+    /* STYLISTS */
+    .stylists { padding: 120px 72px; background: var(--light); }
+    .stylists-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .stylists h2 { font-family: 'Josefin Sans', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; margin-bottom: 56px; }
+    .stylists h2 .thin { font-weight: 200; color: var(--mid); }
+    .stylist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .stylist-card { background: var(--white); padding: 36px 28px; }
+    .stylist-photo {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, #2a2018, #5a4a38);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; margin-bottom: 20px;
+    }
+    .stylist-role { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+    .stylist-name { font-family: 'Josefin Sans', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .stylist-en { font-family: 'Josefin Sans', sans-serif; font-size: 12px; font-weight: 300; color: var(--mid); margin-bottom: 16px; letter-spacing: 0.15em; }
+    .stylist-rule { width: 24px; height: 1px; background: var(--accent); margin-bottom: 16px; }
+    .stylist-text { font-size: 13px; color: #555; line-height: 2; font-weight: 300; }
+    .stylist-years { font-family: 'Josefin Sans', sans-serif; font-size: 11px; color: var(--mid); margin-top: 12px; }
+
+    /* BOOKING */
+    .booking { padding: 120px 72px; background: var(--white); }
+    .booking-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .booking-left { }
+    .booking-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .booking h2 { font-family: 'Josefin Sans', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 32px; }
+    .booking h2 .thin { font-weight: 200; color: var(--mid); }
+    .booking-info { display: flex; flex-direction: column; gap: 0; }
+    .booking-info-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 13px; }
+    .booking-info-key { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); min-width: 80px; padding-top: 2px; }
+    .booking-info-val { color: #444; line-height: 1.8; }
+    .booking-right { }
+    .booking-form { }
+    .booking-form h3 { font-family: 'Josefin Sans', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 24px; letter-spacing: 0.1em; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid rgba(0,0,0,0.15);
+      font-size: 14px; color: var(--black); font-family: inherit; background: transparent;
+      transition: border-color 0.2s; -webkit-appearance: none; border-radius: 0;
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-bottom-color: var(--accent); }
+    .form-group input::placeholder { color: rgba(0,0,0,0.3); }
+    .btn-submit { width: 100%; padding: 16px; background: var(--black); color: var(--white); border: none; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--accent-dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 56px 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { font-family: 'Josefin Sans', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.3em; color: var(--white); }
+    .footer-mid { text-align: center; font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer-right { font-size: 11px; color: rgba(255,255,255,0.2); text-align: right; }
+    .footer-accent { color: var(--accent); }
+
+    /* SAMPLE BANNER */
+    .sample-banner {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(108,99,255,0.92); color: #fff;
+      text-align: center; padding: 10px; font-size: 13px;
+      backdrop-filter: blur(4px); z-index: 999;
+    }
+    .sample-banner a { color: #c7c3ff; text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      header { padding: 0 16px; }
+      nav a:not(.nav-book) { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-left { padding: 48px 24px; }
+      .hero-right { min-height: 300px; grid-template-rows: 1fr; }
+      .hero-img-top { display: block; }
+      .hero-img-bottom { display: none; }
+      .about, .stylists, .booking { padding: 64px 24px; }
+      .about { grid-template-columns: 1fr; }
+      .stylist-grid { grid-template-columns: 1fr; }
+      .booking-inner { grid-template-columns: 1fr; }
+      .menu-header, .menu-list { padding: 48px 24px; }
+      .menu-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
+      .footer-right { text-align: center; }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo">ATELIER KAZE</div>
-    <nav><a href="#about">About</a><a href="#menu">Menu</a><a href="#booking">Booking</a><a href="#booking" class="nav-book">予約する</a></nav>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#stylists">Team</a>
+      <a href="#booking">Booking</a>
+      <a href="#booking" class="nav-book">予約する</a>
+    </nav>
   </header>
+
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-left">✂️</div>
-    <div class="hero-right">
-      <div class="hero-text">
-        <p class="hero-label">Hair Salon · Osaka · Since 2019</p>
-        <h1>YOUR STYLE,<br>YOUR STORY.</h1>
-        <p>あなたらしさを引き出す、<br>オーダーメイドのスタイリングを。</p>
-        <a href="#booking" class="btn-accent">予約する</a>
-        <a href="#menu" class="btn-line">メニューを見る</a>
+    <div class="hero-bg-text">KAZE</div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Hair Salon · Osaka Shinsaibashi · Since 2019</p>
+        <h1>
+          <span>YOUR</span>
+          <span class="thin">HAIR,</span>
+          <span>YOUR</span>
+          <span class="thin">STORY.</span>
+        </h1>
+        <p class="hero-desc">
+          あなたらしさも引き出す、オーダーメイドのスタイリング。骨格・ライフスタイル・なりたいイメージを丁寧にヒアリングし、世界にひとつだけのスタイルをご提供します。
+        </p>
+        <div class="hero-cta">
+          <a href="#booking" class="btn-black">Book Now</a>
+          <span class="hero-scroll"><span class="hero-scroll-line"></span>Scroll</span>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-inner">
-        <div class="about-image">💇</div>
-        <div>
-          <p class="sec-label">About</p>
-          <h2 class="sec-title">「風」のように、<br>自由なスタイルを。</h2>
-          <p style="font-size:14px;line-height:2;color:#666">ATELIER KAZEは「あなたらしさ」を最大限に引き出すオーダーメイドヘアサロンです。カット・カラー・パーマ、すべてのメニューにおいてお客様の骨格・ライフスタイル・なりたいイメージをヒアリングし、世界にひとつだけのスタイルをご提供します。オンライン予約で24時間いつでも予約可能です。</p>
+      <div class="hero-right">
+        <div class="hero-img-top">✂️</div>
+        <div class="hero-img-bottom">
+          <div class="hero-stat">
+            <p class="hero-stat-num">7<span>年</span></p>
+            <p class="hero-stat-label">平均スタイリスト経験</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <section id="menu">
-    <div class="container">
-      <p class="sec-label">Menu</p>
-      <h2 class="sec-title">メニュー・料金</h2>
-      <div class="menu-items">
-        <div class="menu-row"><div><p class="menu-name">カット</p><p class="menu-note">シャンプー・ブロー込み</p></div><p class="menu-price">¥5,500〜</p></div>
-        <div class="menu-row"><div><p class="menu-name">カット + カラー</p><p class="menu-note">フルカラー込み</p></div><p class="menu-price">¥12,000〜</p></div>
-        <div class="menu-row"><div><p class="menu-name">カット + パーマ</p><p class="menu-note">デジタルパーマ対応</p></div><p class="menu-price">¥14,000〜</p></div>
-        <div class="menu-row"><div><p class="menu-name">前髪カット</p><p class="menu-note">前髪のみの調整</p></div><p class="menu-price">¥1,100〜</p></div>
-        <div class="menu-row"><div><p class="menu-name">キッズカット</p><p class="menu-note">小学生以下</p></div><p class="menu-price">¥3,300〜</p></div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-visual">💇</div>
+    <div class="about-text">
+      <p class="about-label">About Us</p>
+      <h2>
+        <span class="thin">「風」のように、</span><br>
+        自由なスタイルを。
+      </h2>
+      <div class="about-rule"></div>
+      <p>ATELIER KAZEは、「あなたらしさ」を最大限に引き出すオーダーメイドヘアサロンです。カット・カラー・パーマ、すべてのメニューにおいてお客様の骨格・ライフスタイル・なりたいイメージをヒアリングし、世界にひとつだけのスタイルをご提供します。</p>
+      <p>流行を追うのではなく、あなた自身の魅力を最大化することを第一に考えます。</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <p class="about-feature-num">500+</p>
+          <p class="about-feature-label">月間施術数</p>
+        </div>
+        <div class="about-feature">
+          <p class="about-feature-num">97%</p>
+          <p class="about-feature-label">リピート率</p>
+        </div>
+        <div class="about-feature">
+          <p class="about-feature-num">5年</p>
+          <p class="about-feature-label">平均来店歴</p>
+        </div>
       </div>
     </div>
   </section>
-  <section class="booking-section" id="booking">
-    <div class="container">
-      <p class="sec-label" style="color:var(--light-accent)">Booking</p>
-      <h2 class="sec-title">オンライン予約</h2>
-      <div class="booking-inner">
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="menu-header">
+      <div class="menu-header-left">
+        <p class="menu-header-label">Menu &amp; Price</p>
+        <h2>メニュー<span class="thin"> / 料金</span></h2>
+      </div>
+      <div class="menu-tabs">
+        <div class="menu-tab active">カット</div>
+        <div class="menu-tab">カラー</div>
+        <div class="menu-tab">パーマ</div>
+        <div class="menu-tab">トリートメント</div>
+      </div>
+    </div>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-name">Cut</p>
+          <p class="menu-note">シャンプー・ブロー込み</p>
+        </div>
+        <p class="menu-price">¥5,500 〜</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-name">Cut + Styling</p>
+          <p class="menu-note">セットまで込み</p>
+        </div>
+        <p class="menu-price">¥7,700 〜</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-name">Bang Trim</p>
+          <p class="menu-note">前髪のみの調整</p>
+        </div>
+        <p class="menu-price">¥1,100 〜</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-name">Kids Cut</p>
+          <p class="menu-note">小学生以下</p>
+        </div>
+        <p class="menu-price">¥3,300 〜</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STYLISTS -->
+  <section class="stylists" id="stylists">
+    <p class="stylists-label">Our Team</p>
+    <h2>スタイリスト<span class="thin"> / Team</span></h2>
+    <div class="stylist-grid">
+      <div class="stylist-card">
+        <div class="stylist-photo">💇</div>
+        <p class="stylist-role">Director Stylist</p>
+        <p class="stylist-name">田中 一樹</p>
+        <p class="stylist-en">TANAKA KAZUKI</p>
+        <div class="stylist-rule"></div>
+        <p class="stylist-text">大阪・東京の有名サロンで研鑽を積み、2019年に独立。骨格診断とパーソナルカラーを組み合わせた独自スタイリングが人気。</p>
+        <p class="stylist-years">経験 12年</p>
+      </div>
+      <div class="stylist-card">
+        <div class="stylist-photo">💇‍♀️</div>
+        <p class="stylist-role">Senior Stylist</p>
+        <p class="stylist-name">佐々木 咲</p>
+        <p class="stylist-en">SASAKI SAKI</p>
+        <div class="stylist-rule"></div>
+        <p class="stylist-text">柔らかいカラーリングと繊細なカットが得意。「似合わせ」へのこだわりが強く、リピーター率は98%を誇る。</p>
+        <p class="stylist-years">経験 7年</p>
+      </div>
+      <div class="stylist-card">
+        <div class="stylist-photo">💆‍♂️</div>
+        <p class="stylist-role">Stylist</p>
+        <p class="stylist-name">中村 蓮</p>
+        <p class="stylist-en">NAKAMURA REN</p>
+        <div class="stylist-rule"></div>
+        <p class="stylist-text">トレンドを取り入れながらも、お客様のライフスタイルに合わせた「扱いやすいスタイリスト。</p>
+        <p class="stylist-years">経験 4年</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="booking">
+    <div class="booking-inner">
+      <div class="booking-left">
+        <p class="booking-label">Booking</p>
+        <h2>
+          <span class="thin">Online</span><br>
+          Reservation
+        </h2>
+        <div class="booking-info">
+          <div class="booking-info-item">
+            <span class="booking-info-key">Address</span>
+            <span class="booking-info-val">大阪府大阪市中央区心斎橋X-X-X</span>
+          </div>
+          <div class="booking-info-item">
+            <span class="booking-info-key">Tel</span>
+            <span class="booking-info-val">06-XXXX-XXXX</span>
+          </div>
+          <div class="booking-info-item">
+            <span class="booking-info-key">Hours</span>
+            <span class="booking-info-val">10:00〜20:00<br>（最終受付 18:30）</span>
+          </div>
+          <div class="booking-info-item">
+            <span class="booking-info-key">Holiday</span>
+            <span class="booking-info-val">毎週火曜日</span>
+          </div>
+        </div>
+      </div>
+      <div class="booking-right">
         <div class="booking-form">
           <h3>予約フォーム</h3>
-          <div class="form-group"><label>お名前</label><input type="text" placeholder="山田 花子"></div>
-          <div class="form-group"><label>電話番号</label><input type="tel" placeholder="090-XXXX-XXXX"></div>
-          <div class="form-group"><label>希望日</label><input type="date"></div>
-          <div class="form-group"><label>希望時間</label><select><option>10:00</option><option>11:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option></select></div>
-          <div class="form-group"><label>メニュー</label><select><option>カット</option><option>カット+カラー</option><option>カット+パーマ</option><option>カラーのみ</option><option>その他</option></select></div>
-          <button class="btn-book">予約を確定する</button>
-        </div>
-        <div class="booking-info">
-          <h3>サロン情報</h3>
-          <div class="info-row"><strong>住所</strong>大阪府大阪市中央区心斎橋X-X-X</div>
-          <div class="info-row"><strong>TEL</strong>06-XXXX-XXXX</div>
-          <div class="info-row"><strong>営業時間</strong>10:00〜20:00</div>
-          <div class="info-row"><strong>定休日</strong>毎週火曜日</div>
-          <div class="stylist-card"><div class="stylist-avatar">💇</div><div><p class="stylist-name">Kazuki（田中 一樹）</p><p class="stylist-title">代表スタイリスト / 経験12年</p></div></div>
-          <div class="stylist-card"><div class="stylist-avatar">💇‍♀️</div><div><p class="stylist-name">Saki（佐々木 咲）</p><p class="stylist-title">スタイリスト / 経験7年</p></div></div>
+          <div class="form-group"><label>Name</label><input type="text" placeholder="山田 花子"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="090-XXXX-XXXX"></div>
+          <div class="form-group"><     <div class="form-group"><label>Date</label><input type="date"></div>
+          <div class="form-group"><label>Time</label>
+            <select>
+              <option>10:00</option><option>11:00</option><option>12:00</option>
+              <option>13:00</option><option>14:00</option><option>15:00</option>
+              <option>16:00</option><option>17:00</option><option>18:00</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Menu</label>
+            <select>
+              <option>カット</option><option>カット + カラー</option>
+              <option>カット + パーマ</option><option>カラーのみ</option><option>その他</option>
+            </select>
+          </div>
+          <button class="btn-submit">Confirm Reservation</button>
         </div>
       </div>
     </div>
   </section>
-  <footer><p class="footer-logo">ATELIER KAZE</p><p>〒542-0085 大阪府大阪市中央区心斎橋X-X-X</p><p style="margin-top:8px">© 2024 Atelier KAZE. All Rights Reserved.</p></footer>
-  <div class="sample-banner">⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。</div>
+
+  <footer>
+    <div class="footer-logo">ATELIER KAZE</div>
+    <div class="footer-mid">
+      <p>〒542-0085 大阪府大阪市中央区心斎橋X-X-X</p>
+    </div>
+    <div class="footer-right">
+      <p>© 2024 <span class="footer-accent">ATELIER KAZE</span></p>
+      <p>All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div class="sample-banner">
+    ⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
+  </div>
+
 </body>
 </html>
