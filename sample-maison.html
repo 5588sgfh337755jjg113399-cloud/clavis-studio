@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MAISONは自然素材にこだわったライフスタイルセレクトショップ。キッチン、インテリア、バスケア、ギフトまで、長く使える暮らしの道具を揃えています。" />
   <title>MAISON | ライフスタイルセレクトショップ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -18,10 +18,10 @@
       --border: #ddd5c8;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; max-width: 100%; height: auto; }
 
-    /* ANNOUNCEMENT BAR */
     .announce-bar {
       background: var(--sage); color: #fff;
       text-align: center; padding: 10px 16px;
@@ -29,7 +29,6 @@
     }
     .announce-bar strong { font-weight: 700; }
 
-    /* HEADER */
     header {
       position: sticky; top: 0; z-index: 200;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
@@ -39,7 +38,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 68px;
     }
-    .logo { font-family: 'Libre Baskerville', serif; font-size: 24px; letter-spacing: 0.2em; color: var(--text); }
+    .logo { font-family: Georgia, serif; font-size: 24px; letter-spacing: 0.2em; color: var(--text); }
     .logo em { color: var(--sage); font-style: italic; }
     .header-icons { display: flex; align-items: center; gap: 20px; }
     .header-icon { font-size: 18px; cursor: pointer; color: var(--muted); transition: color 0.2s; }
@@ -58,46 +57,52 @@
     .header-nav a:hover { color: var(--text); }
     .header-nav a.active { color: var(--sage); border-bottom-color: var(--sage); font-weight: 700; }
 
-    /* HERO */
     .hero {
       display: grid; grid-template-columns: 7fr 5fr;
       min-height: 600px;
     }
     .hero-main {
-      background: linear-gradient(160deg, #3a4e38 0%, #5e7a5a 60%, #7a9878 100%);
+      background: linear-gradient(rgba(58,78,56,0.2), rgba(38,48,34,0.72)), url("assets/maison-hero.jpg") center/cover;
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 64px; position: relative; overflow: hidden;
     }
     .hero-main::before {
-      content: 'MAISON';
+      content: "MAISON";
       position: absolute; top: -30px; left: -20px;
-      font-family: 'Libre Baskerville', serif; font-size: 200px; font-weight: 700; font-style: italic;
-      color: rgba(255,255,255,0.06); white-space: nowrap; pointer-events: none;
+      font-family: Georgia, serif; font-size: 200px; font-weight: 700; font-style: italic;
+      color: rgba(255,255,255,0.08); white-space: nowrap; pointer-events: none;
     }
-    .hero-main-emoji { font-size: 120px; margin-bottom: 32px; }
-    .hero-tag { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; font-size: 11px; letter-spacing: 0.2em; padding: 5px 14px; border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; }
-    .hero-main h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 4vw, 52px); color: #fff; line-height: 1.25; margin-bottom: 16px; }
-    .hero-main p { color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
-    .btn-white { background: #fff; color: var(--text); padding: 14px 36px; font-size: 13px; font-weight: 700; border-radius: 2px; display: inline-block; transition: all 0.2s; }
+    .hero-tag { display: inline-block; width: max-content; background: rgba(255,255,255,0.16); color: #fff; font-size: 11px; letter-spacing: 0.2em; padding: 5px 14px; border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; }
+    .hero-main h1 { font-family: Georgia, serif; font-size: clamp(32px, 4vw, 52px); color: #fff; line-height: 1.25; margin-bottom: 16px; position: relative; }
+    .hero-main p { color: rgba(255,255,255,0.86); font-size: 14px; line-height: 1.8; margin-bottom: 32px; position: relative; }
+    .btn-white { background: #fff; color: var(--text); padding: 14px 36px; font-size: 13px; font-weight: 700; border-radius: 2px; display: inline-block; transition: all 0.2s; width: max-content; position: relative; }
     .btn-white:hover { background: var(--warm); }
     .hero-side { display: grid; grid-template-rows: 1fr 1fr; }
     .hero-side-item {
+      position: relative;
       background: var(--warm); display: flex; flex-direction: column;
       align-items: center; justify-content: center; padding: 32px;
       text-align: center; cursor: pointer; transition: background 0.2s;
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
     }
+    .hero-side-item img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.34; transition: transform 0.35s ease, opacity 0.2s ease;
+    }
+    .hero-side-item:hover img { transform: scale(1.04); opacity: 0.45; }
     .hero-side-item:last-child { border-bottom: none; background: var(--sage-pale); }
-    .hero-side-item:hover { filter: brightness(0.97); }
-    .hero-side-emoji { font-size: 56px; margin-bottom: 12px; }
+    .hero-side-label,
+    .hero-side-title,
+    .hero-side-desc { position: relative; z-index: 1; }
     .hero-side-label { font-size: 11px; letter-spacing: 0.2em; color: var(--sage); text-transform: uppercase; margin-bottom: 6px; }
-    .hero-side-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--text); margin-bottom: 8px; }
-    .hero-side-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .hero-side-title { font-family: Georgia, serif; font-size: 18px; color: var(--text); margin-bottom: 8px; }
+    .hero-side-desc { font-size: 12px; color: var(--muted); line-height: 1.7; max-width: 240px; }
 
-    /* CATEGORIES */
     .categories { padding: 64px 48px; background: var(--warm); }
     .categories-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
-    .categories-header h2 { font-family: 'Libre Baskerville', serif; font-size: 24px; }
+    .categories-header h2 { font-family: Georgia, serif; font-size: 24px; }
     .categories-header p { font-size: 12px; color: var(--muted); }
     .category-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .category-item {
@@ -107,40 +112,32 @@
     }
     .category-item:hover { border-color: var(--sage); background: var(--sage-pale); }
     .category-item.active { background: var(--sage); border-color: var(--sage); }
-    .category-emoji { font-size: 28px; margin-bottom: 8px; }
+    .category-emoji { font-size: 24px; margin-bottom: 8px; }
     .category-name { font-size: 12px; font-weight: 700; color: var(--text); }
     .category-item.active .category-name { color: #fff; }
     .category-count { font-size: 11px; color: var(--muted); margin-top: 2px; }
     .category-item.active .category-count { color: rgba(255,255,255,0.7); }
 
-    /* PRODUCTS */
     .products { padding: 64px 48px; }
     .products-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
-    .products-header h2 { font-family: 'Libre Baskerville', serif; font-size: 24px; }
+    .products-header h2 { font-family: Georgia, serif; font-size: 24px; }
     .products-header p { font-size: 13px; color: var(--muted); }
     .products-filter { display: flex; gap: 8px; }
-    .filter-btn { padding: 7px 16px; border-radius: 20px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .filter-btn { padding: 7px 16px; border-radius: 20px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.2s; background: #fff; }
     .filter-btn.active { background: var(--sage); border-color: var(--sage); color: #fff; }
     .filter-btn:hover:not(.active) { border-color: var(--sage); color: var(--sage); }
     .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .product-card { cursor: pointer; }
     .product-img {
       aspect-ratio: 1; border-radius: 4px; margin-bottom: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 60px; overflow: hidden; position: relative;
+      overflow: hidden; position: relative;
       background: var(--warm);
       transition: all 0.3s;
     }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
     .product-img:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-    .product-img.p1 { background: linear-gradient(135deg, #e8d8c0, #d4c4a8); }
-    .product-img.p2 { background: linear-gradient(135deg, #c8d4bf, #a8c0a0); }
-    .product-img.p3 { background: linear-gradient(135deg, #d4c8b8, #c4b8a8); }
-    .product-img.p4 { background: linear-gradient(135deg, #e0d4c0, #c8b898); }
-    .product-img.p5 { background: linear-gradient(135deg, #b8c8b4, #90a88c); }
-    .product-img.p6 { background: linear-gradient(135deg, #e8dcd0, #d8ccc0); }
-    .product-img.p7 { background: linear-gradient(135deg, #c8d8c4, #a8c0a4); }
-    .product-img.p8 { background: linear-gradient(135deg, #d8c8b0, #c0a880); }
-    .product-badge { position: absolute; top: 10px; left: 10px; background: var(--sage); color: #fff; font-size: 10px; padding: 3px 10px; border-radius: 2px; letter-spacing: 0.08em; }
+    .product-img:hover img { transform: scale(1.04); }
+    .product-badge { position: absolute; top: 10px; left: 10px; background: var(--sage); color: #fff; font-size: 10px; padding: 3px 10px; border-radius: 2px; letter-spacing: 0.08em; z-index: 1; }
     .product-badge.new { background: var(--text); }
     .product-badge.sale { background: #c06030; }
     .product-brand { font-size: 10px; color: var(--sage); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px; }
@@ -149,44 +146,38 @@
     .product-price { font-size: 15px; font-weight: 700; color: var(--text); }
     .product-price-original { font-size: 12px; color: #aaa; text-decoration: line-through; }
 
-    /* BANNER */
     .banner { margin: 0 48px; padding: 48px 56px; background: linear-gradient(135deg, var(--sage) 0%, #4a6848 100%); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; }
-    .banner-left {}
     .banner-tag { font-size: 11px; letter-spacing: 0.2em; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 12px; }
-    .banner h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 36px); color: #fff; line-height: 1.3; margin-bottom: 8px; }
+    .banner h2 { font-family: Georgia, serif; font-size: clamp(24px, 3vw, 36px); color: #fff; line-height: 1.3; margin-bottom: 8px; }
     .banner p { color: rgba(255,255,255,0.7); font-size: 14px; }
     .btn-white-outline { border: 2px solid #fff; color: #fff; padding: 14px 36px; font-size: 13px; font-weight: 700; border-radius: 2px; display: inline-block; transition: all 0.2s; white-space: nowrap; }
     .btn-white-outline:hover { background: #fff; color: var(--sage); }
 
-    /* FEATURES */
     .features { padding: 64px 48px; background: var(--warm); }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); }
     .feature-item { padding: 36px 28px; border-right: 1px solid var(--border); text-align: center; }
     .feature-item:last-child { border-right: none; }
-    .feature-icon { font-size: 36px; margin-bottom: 16px; }
+    .feature-icon { font-size: 30px; margin-bottom: 16px; color: var(--sage); }
     .feature-title { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
     .feature-text { font-size: 12px; color: var(--muted); line-height: 1.8; }
 
-    /* ABOUT */
     .about-section { padding: 80px 48px; }
     .about-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .about-img {
       aspect-ratio: 4/3; border-radius: 4px;
-      background: linear-gradient(135deg, #4a6848, #7a9878);
-      display: flex; align-items: center; justify-content: center; font-size: 96px;
+      background: url("assets/maison-interior.jpg") center/cover;
+      min-height: 300px;
     }
-    .about-text {}
     .about-label { font-size: 11px; letter-spacing: 0.3em; color: var(--sage); text-transform: uppercase; margin-bottom: 14px; }
-    .about-text h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 36px); line-height: 1.4; margin-bottom: 20px; }
+    .about-text h2 { font-family: Georgia, serif; font-size: clamp(24px, 3vw, 36px); line-height: 1.4; margin-bottom: 20px; }
     .about-text h2 em { color: var(--sage); font-style: italic; }
     .about-text p { font-size: 14px; color: var(--muted); line-height: 2.1; margin-bottom: 12px; }
     .btn-sage { background: var(--sage); color: #fff; padding: 14px 36px; font-size: 13px; font-weight: 700; border-radius: 2px; display: inline-block; margin-top: 12px; transition: background 0.2s; }
     .btn-sage:hover { background: #4a6848; }
 
-    /* NEWSLETTER */
     .newsletter { padding: 80px 48px; background: var(--sage-pale); text-align: center; }
-    .newsletter h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 36px); margin-bottom: 12px; }
-    .newsletter p { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .newsletter h2 { font-family: Georgia, serif; font-size: clamp(24px, 3vw, 36px); margin-bottom: 12px; }
+    .newsletter p { font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.8; }
     .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
     .newsletter-input { flex: 1; padding: 13px 16px; border: 1px solid var(--border); border-radius: 2px; font-size: 14px; font-family: inherit; }
     .newsletter-input:focus { outline: none; border-color: var(--sage); }
@@ -194,11 +185,9 @@
     .newsletter-btn { padding: 13px 28px; background: var(--sage); color: #fff; border: none; border-radius: 2px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
     .newsletter-btn:hover { background: #4a6848; }
 
-    /* FOOTER */
     footer { background: var(--text); padding: 56px 48px 32px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand {}
-    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 22px; color: #fff; letter-spacing: 0.2em; margin-bottom: 12px; }
+    .footer-logo { font-family: Georgia, serif; font-size: 22px; color: #fff; letter-spacing: 0.2em; margin-bottom: 12px; }
     .footer-brand-text { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 2; }
     .footer-col h4 { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
     .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 10px; transition: color 0.2s; }
@@ -208,7 +197,6 @@
     .footer-payments { display: flex; gap: 8px; }
     .payment-icon { background: rgba(255,255,255,0.1); border-radius: 3px; padding: 4px 8px; font-size: 11px; color: rgba(255,255,255,0.4); }
 
-    /* SAMPLE BANNER */
     .sample-banner {
       position: fixed; bottom: 0; left: 0; right: 0;
       background: rgba(108,99,255,0.92); color: #fff;
@@ -219,13 +207,18 @@
 
     @media (max-width: 768px) {
       .header-top { padding: 0 16px; }
-      .header-nav { padding: 0 8px; overflow-x: auto; }
+      header { overflow: hidden; }
+      .header-nav { width: 100%; max-width: 100vw; padding: 0 8px; overflow-x: auto; }
+      .header-nav a { flex: 0 0 auto; }
       .hero { grid-template-columns: 1fr; }
+      .hero-main { min-height: 520px; padding: 48px 24px; }
+      .hero-main::before { font-size: 120px; }
       .hero-side { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
       .categories { padding: 48px 16px; }
       .category-grid { grid-template-columns: repeat(3, 1fr); }
       .products { padding: 48px 16px; }
       .products-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .products-filter { overflow-x: auto; width: 100%; padding-bottom: 2px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .banner { margin: 0 16px; flex-direction: column; gap: 24px; text-align: center; padding: 36px 24px; }
       .features { padding: 48px 16px; }
@@ -233,6 +226,7 @@
       .feature-item:nth-child(2) { border-right: none; }
       .about-section { padding: 64px 16px; }
       .about-inner { grid-template-columns: 1fr; }
+      .about-img { min-height: 0; }
       .newsletter { padding: 64px 16px; }
       .newsletter-form { flex-direction: column; }
       footer { padding: 48px 16px 24px; }
@@ -245,16 +239,16 @@
 <body>
 
   <div class="announce-bar">
-    <strong>🌿 送料無料キャンペーン実施中</strong> — ¥8,000以上のお買い上げで全国送料無料
+    <strong>送料無料キャンペーン実施中</strong> / ¥8,000以上のお買い上げで全国送料無料
   </div>
 
   <header>
     <div class="header-top">
       <div class="logo"><em>Maison</em></div>
       <div class="header-icons">
-        <span class="header-icon">🔍</span>
-        <span class="header-icon">♡</span>
-        <span class="header-icon cart-badge">🛒<span class="cart-count">2</span></span>
+        <span class="header-icon">Search</span>
+        <span class="header-icon">Wish</span>
+        <span class="header-icon cart-badge">Cart<span class="cart-count">2</span></span>
       </div>
     </div>
     <nav class="header-nav">
@@ -269,24 +263,22 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-main">
-      <div class="hero-main-emoji">🌿</div>
-      <span class="hero-tag">New Collection 2024</span>
+      <span class="hero-tag">New Collection 2026</span>
       <h1>暮らしに、<br>自然のぬくもりを。</h1>
-      <p>素材を選び、作り手を知り、<br>長く使えるものだけをセレクト。</p>
+      <p>素材を選び、作り手を知り、長く使えるものだけをセレクト。毎日を静かに整える、暮らしの道具をお届けします。</p>
       <a href="#products" class="btn-white">コレクションを見る</a>
     </div>
     <div class="hero-side">
       <div class="hero-side-item">
-        <div class="hero-side-emoji">🫖</div>
+        <img src="assets/maison-kitchen.jpg" alt="自然素材のキッチンウェア">
         <p class="hero-side-label">Kitchen</p>
         <p class="hero-side-title">キッチンウェア</p>
         <p class="hero-side-desc">毎日の料理が楽しくなるアイテム</p>
       </div>
       <div class="hero-side-item">
-        <div class="hero-side-emoji">🕯</div>
+        <img src="assets/maison-interior.jpg" alt="ナチュラルなインテリア雑貨">
         <p class="hero-side-label">Interior</p>
         <p class="hero-side-title">インテリア雑貨</p>
         <p class="hero-side-desc">部屋に彩りを添えるセレクション</p>
@@ -294,182 +286,119 @@
     </div>
   </section>
 
-  <!-- CATEGORIES -->
   <section class="categories" id="categories">
     <div class="categories-header">
       <h2>カテゴリから探す</h2>
       <p>全 148 アイテム</p>
     </div>
     <div class="category-grid">
-      <div class="category-item active">
-        <div class="category-emoji">🛍</div>
-        <p class="category-name">すべて</p>
-        <p class="category-count">148点</p>
-      </div>
-      <div class="category-item">
-        <div class="category-emoji">🍳</div>
-        <p class="category-name">キッチン</p>
-        <p class="category-count">42点</p>
-      </div>
-      <div class="category-item">
-        <div class="category-emoji">🕯</div>
-        <p class="category-name">インテリア</p>
-        <p class="category-count">38点</p>
-      </div>
-      <div class="category-item">
-        <div class="category-emoji">🛁</div>
-        <p class="category-name">バス・ケア</p>
-        <p class="category-count">24点</p>
-      </div>
-      <div class="category-item">
-        <div class="category-emoji">🎁</div>
-        <p class="category-name">ギフト</p>
-        <p class="category-count">22点</p>
-      </div>
+      <div class="category-item active"><div class="category-emoji">All</div><p class="category-name">すべて</p><p class="category-count">148点</p></div>
+      <div class="category-item"><div class="category-emoji">Kitchen</div><p class="category-name">キッチン</p><p class="category-count">42点</p></div>
+      <div class="category-item"><div class="category-emoji">Interior</div><p class="category-name">インテリア</p><p class="category-count">38点</p></div>
+      <div class="category-item"><div class="category-emoji">Care</div><p class="category-name">バス・ケア</p><p class="category-count">24点</p></div>
+      <div class="category-item"><div class="category-emoji">Gift</div><p class="category-name">ギフト</p><p class="category-count">22点</p></div>
     </div>
   </section>
 
-  <!-- PRODUCTS -->
   <section class="products" id="products">
     <div class="products-header">
       <div>
         <h2>人気商品</h2>
-        <p>人気順 · 全 148 アイテム</p>
+        <p>人気順 / 全 148 アイテム</p>
       </div>
       <div class="products-filter">
         <button class="filter-btn active">人気順</button>
         <button class="filter-btn">新着順</button>
-        <button class="filter-btn">価格↑</button>
-        <button class="filter-btn">価格↓</button>
+        <button class="filter-btn">価格 ↑</button>
+        <button class="filter-btn">価格 ↓</button>
       </div>
     </div>
     <div class="product-grid">
       <div class="product-card">
-        <div class="product-img p1">
-          <span class="product-badge">人気 No.1</span>
-          🫖
-        </div>
+        <div class="product-img"><span class="product-badge">人気 No.1</span><img src="assets/maison-kettle.jpg" alt="アイアンケトル ナチュラル"></div>
         <p class="product-brand">Maison Select</p>
         <p class="product-name">アイアンケトル ナチュラル</p>
         <div class="product-price-row"><p class="product-price">¥6,800</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p2">
-          <span class="product-badge new">New</span>
-          🌿
-        </div>
+        <div class="product-img"><span class="product-badge new">New</span><img src="assets/maison-bouquet.jpg" alt="ドライフラワーブーケ セージ"></div>
         <p class="product-brand">Botanics</p>
         <p class="product-name">ドライフラワーブーケ・セージ</p>
         <div class="product-price-row"><p class="product-price">¥3,200</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p3">
-          <span class="product-badge sale">SALE</span>
-          🕯
-        </div>
+        <div class="product-img"><span class="product-badge sale">SALE</span><img src="assets/maison-candle.jpg" alt="ソイキャンドル バニラ&ウッド"></div>
         <p class="product-brand">Lumina</p>
         <p class="product-name">ソイキャンドル バニラ&ウッド</p>
         <div class="product-price-row"><p class="product-price">¥2,100</p><p class="product-price-original">¥2,800</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p4">
-          🍽
-        </div>
+        <div class="product-img"><img src="assets/maison-plates.jpg" alt="プレートセット テラコッタ"></div>
         <p class="product-brand">Terracotta</p>
-        <p class="product-name">プレート セット 4枚組（マット釉薬）</p>
+        <p class="product-name">プレートセット 4枚組 / マット釉薬</p>
         <div class="product-price-row"><p class="product-price">¥8,400</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p5">
-          <span class="product-badge new">New</span>
-          🧴
-        </div>
+        <div class="product-img"><span class="product-badge new">New</span><img src="assets/maison-handcream.jpg" alt="ハンドクリーム ユーカリ&ミント"></div>
         <p class="product-brand">Organic Base</p>
         <p class="product-name">ハンドクリーム ユーカリ&ミント</p>
         <div class="product-price-row"><p class="product-price">¥1,800</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p6">
-          ☕
-        </div>
+        <div class="product-img"><img src="assets/maison-coffee.jpg" alt="コーヒードリッパーとグラスサーバー"></div>
         <p class="product-brand">Maison Select</p>
-        <p class="product-name">コーヒードリッパー＋グラスセット</p>
+        <p class="product-name">コーヒードリッパー / グラスセット</p>
         <div class="product-price-row"><p class="product-price">¥4,400</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p7">
-          <span class="product-badge sale">SALE</span>
-          🪴
-        </div>
+        <div class="product-img"><span class="product-badge sale">SALE</span><img src="assets/maison-plantpot.jpg" alt="テラコッタポット 大"></div>
         <p class="product-brand">Green Room</p>
-        <p class="product-name">テラコッタポット（大）</p>
+        <p class="product-name">テラコッタポット / 大</p>
         <div class="product-price-row"><p class="product-price">¥2,400</p><p class="product-price-original">¥3,200</p></div>
       </div>
       <div class="product-card">
-        <div class="product-img p8">
-          🧺
-        </div>
+        <div class="product-img"><img src="assets/maison-basket.jpg" alt="シーグラスバスケット Mサイズ"></div>
         <p class="product-brand">Weave</p>
-        <p class="product-name">シーゲイスバスケット Mサイズ</p>
+        <p class="product-name">シーグラスバスケット Mサイズ</p>
         <div class="product-price-row"><p class="product-price">¥5,200</p></div>
       </div>
     </div>
   </section>
 
-  <!-- BANNER -->
   <div class="banner">
     <div class="banner-left">
       <p class="banner-tag">Special Gift Box</p>
       <h2>大切な人への贈り物に。<br>ギフトラッピング無料。</h2>
-      <p>誕生日・結婚祝い・引越し祝いなど、あらゆるシーンに対応。</p>
+      <p>誕生日・結婚祝い・引越し祝いなど、あらゆるシーンに対応します。</p>
     </div>
     <a href="#" class="btn-white-outline">ギフトを選ぶ</a>
   </div>
 
-  <!-- FEATURES -->
   <section class="features">
     <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🌿</div>
-        <p class="feature-title">サステナブル素材</p>
-        <p class="feature-text">環境に配慮した素材だけをセレクト。地球にやさしい暮らしを。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🚚</div>
-        <p class="feature-title">翌日配送対応</p>
-        <p class="feature-text">午前中のご注文は最短翌日にお届け（一部地域除く）。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🔄</div>
-        <p class="feature-title">30日間返品保証</p>
-        <p class="feature-text">未使用品であれば購入から30日以内は返品・交換OK。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💬</div>
-        <p class="feature-title">丁寧なサポート</p>
-        <p class="feature-text">メール・LINE・電話でいつでもご相談いただけます。</p>
-      </div>
+      <div class="feature-item"><div class="feature-icon">Sustainable</div><p class="feature-title">サステナブル素材</p><p class="feature-text">環境に配慮した素材だけをセレクト。地球にやさしい暮らしを。</p></div>
+      <div class="feature-item"><div class="feature-icon">Fast</div><p class="feature-title">翌日配送対応</p><p class="feature-text">午前中のご注文は最短翌日にお届け。一部地域を除きます。</p></div>
+      <div class="feature-item"><div class="feature-icon">Return</div><p class="feature-title">30日間返品保証</p><p class="feature-text">未使用品であれば購入から30日以内の返品・交換が可能です。</p></div>
+      <div class="feature-item"><div class="feature-icon">Support</div><p class="feature-title">丁寧なサポート</p><p class="feature-text">メール・LINE・電話でいつでもご相談いただけます。</p></div>
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="about-section">
     <div class="about-inner">
-      <div class="about-img">🌱</div>
+      <div class="about-img" role="img" aria-label="MAISONが提案する自然素材のある暮らし"></div>
       <div class="about-text">
         <p class="about-label">About Maison</p>
-        <h2>「長く使えるもの」<br>だけを、<em>セレクト。</em></h2>
+        <h2>「長く使えるもの」だけを、<br><em>セレクト。</em></h2>
         <p>MAISONは「本当に良いものだけを届けたい」という思いから生まれたライフスタイルセレクトショップです。</p>
-        <p>作り手と直接対話し、素材・製法・倫理基準を確認した上で取り扱いを決定。流行に流されず、生活に本当に溶け込むアイテムを提案し続けます。</p>
+        <p>作り手と直接対話し、素材・製法・倫理基準を確認した上で取り扱いを決めています。流行に流されず、生活に本当に溶け込むアイテムをご提案し続けます。</p>
         <a href="#" class="btn-sage">ブランドストーリーを読む</a>
       </div>
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
   <section class="newsletter">
     <h2>新着情報をお届けします</h2>
-    <p>メルマガ登録で、新商品情報・限定セール・コラムをお届け。<br>登録者限定 10% OFFクーポンをプレゼント中。</p>
+    <p>メルマガ登録で、新商品情報・限定セール・コラムをお届け。<br>登録者限定10% OFFクーポンをプレゼント中。</p>
     <div class="newsletter-form">
       <input class="newsletter-input" type="email" placeholder="メールアドレスを入力">
       <button class="newsletter-btn">登録する</button>
@@ -480,43 +409,20 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <p class="footer-logo">Maison</p>
-        <p class="footer-brand-text">自然素材にこだわったライフスタイルセレクトショップ。<br>暮らしに寄り添うもの、長く使えるものだけをお届けします。</p>
+        <p class="footer-brand-text">自然素材にこだわったライフスタイルセレクトショップ。<br>暮らしに寄り添う、長く使えるものだけをお届けします。</p>
       </div>
-      <div class="footer-col">
-        <h4>Shop</h4>
-        <a href="#">新着商品</a>
-        <a href="#">人気商品</a>
-        <a href="#">セール</a>
-        <a href="#">ギフト</a>
-      </div>
-      <div class="footer-col">
-        <h4>Info</h4>
-        <a href="#">会社概要</a>
-        <a href="#">配送について</a>
-        <a href="#">返品・交換</a>
-        <a href="#">よくある質問</a>
-      </div>
-      <div class="footer-col">
-        <h4>Follow</h4>
-        <a href="#">📷 Instagram</a>
-        <a href="#">🐦 Twitter</a>
-        <a href="#">📌 Pinterest</a>
-        <a href="#">📬 メルマガ</a>
-      </div>
+      <div class="footer-col"><h4>Shop</h4><a href="#">新着商品</a><a href="#">人気商品</a><a href="#">セール</a><a href="#">ギフト</a></div>
+      <div class="footer-col"><h4>Info</h4><a href="#">会社概要</a><a href="#">配送について</a><a href="#">返品・交換</a><a href="#">よくある質問</a></div>
+      <div class="footer-col"><h4>Follow</h4><a href="#">Instagram</a><a href="#">Twitter</a><a href="#">Pinterest</a><a href="#">メルマガ</a></div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2024 MAISON. All Rights Reserved.</p>
-      <div class="footer-payments">
-        <span class="payment-icon">VISA</span>
-        <span class="payment-icon">MC</span>
-        <span class="payment-icon">AMEX</span>
-        <span class="payment-icon">PayPay</span>
-      </div>
+      <p class="footer-copy">© 2026 MAISON. All Rights Reserved.</p>
+      <div class="footer-payments"><span class="payment-icon">VISA</span><span class="payment-icon">MC</span><span class="payment-icon">AMEX</span><span class="payment-icon">PayPay</span></div>
     </div>
   </footer>
 
   <div class="sample-banner">
-    ⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
+    これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
   </div>
 
 </body>
