@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lumièreは銀座のトータルビューティーサロン。フェイシャル、ボディ、アイラッシュ・ブロウを一人ひとりに合わせてご提案します。" />
   <title>Lumière | トータルビューティーサロン</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -16,10 +16,10 @@
       --muted: #7a6a58;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; max-width: 100%; height: auto; }
 
-    /* ─── HEADER ─── */
     header {
       position: fixed; top: 0; width: 100%; z-index: 200;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);
@@ -28,11 +28,11 @@
       border-bottom: 1px solid rgba(168,131,42,0.15);
     }
     .logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, serif;
       font-size: 28px; letter-spacing: 0.18em; color: var(--gold);
       font-weight: 300;
     }
-    .logo sub { font-size: 11px; letter-spacing: 0.25em; vertical-align: middle; color: var(--muted); font-family: 'Noto Sans JP', sans-serif; margin-left: 4px; }
+    .logo sub { font-size: 11px; letter-spacing: 0.25em; vertical-align: middle; color: var(--muted); font-family: system-ui, sans-serif; margin-left: 4px; }
     nav a { margin-left: 32px; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; transition: color 0.2s; }
     nav a:hover { color: var(--gold); }
     .nav-book {
@@ -41,7 +41,6 @@
     }
     .nav-book:hover { background: var(--gold) !important; }
 
-    /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
       background: var(--bg);
@@ -55,17 +54,25 @@
       position: relative; overflow: hidden;
     }
     .hero-left::after {
-      content: '';
+      content: "";
       position: absolute; top: 0; right: 0; bottom: 0; width: 60px;
       background: linear-gradient(to right, transparent, var(--bg));
+      pointer-events: none;
     }
-    .hero-left-inner { text-align: center; padding: 40px; }
-    .hero-icon { font-size: 110px; display: block; margin-bottom: 24px; }
+    .hero-left img {
+      width: 100%;
+      height: 100%;
+      min-height: calc(100vh - 72px);
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.96) contrast(1.02);
+    }
     .hero-tagline-jp {
-      font-size: 13px; color: rgba(255,255,255,0.4);
+      font-size: 13px; color: rgba(255,255,255,0.74);
       letter-spacing: 0.2em; line-height: 2;
       writing-mode: vertical-rl;
       position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+      z-index: 1; text-shadow: 0 2px 16px rgba(0,0,0,0.28);
     }
     .hero-right {
       flex: 1;
@@ -76,9 +83,9 @@
       font-size: 10px; letter-spacing: 0.45em; color: var(--gold); text-transform: uppercase;
       margin-bottom: 32px; display: flex; align-items: center; gap: 16px;
     }
-    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-light); }
+    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--gold-light); }
     .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, serif;
       font-size: clamp(44px, 5vw, 76px);
       font-weight: 300; line-height: 1.15;
       color: var(--dark); margin-bottom: 32px;
@@ -99,28 +106,26 @@
     .btn-text { font-size: 12px; color: var(--gold); letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
     .btn-text:hover { gap: 10px; }
     .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(168,131,42,0.15); }
-    .stat-item { }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--gold); font-weight: 300; line-height: 1; }
+    .stat-num { font-family: Georgia, serif; font-size: 36px; color: var(--gold); font-weight: 300; line-height: 1; }
     .stat-num sup { font-size: 16px; }
     .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; margin-top: 4px; }
 
-    /* ─── PHILOSOPHY ─── */
     .philosophy {
       padding: 120px 20px;
       background: var(--dark);
       position: relative; overflow: hidden;
     }
     .philosophy::before {
-      content: 'BEAUTY';
+      content: "BEAUTY";
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-family: 'Cormorant Garamond', serif; font-size: 280px; font-weight: 600;
+      font-family: Georgia, serif; font-size: 280px; font-weight: 600;
       color: rgba(255,255,255,0.025); line-height: 1; white-space: nowrap;
       pointer-events: none; letter-spacing: 0.15em;
     }
     .philosophy-container { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
     .philosophy-label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold-light); text-transform: uppercase; margin-bottom: 24px; }
     .philosophy h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, serif;
       font-size: clamp(32px, 4vw, 56px); font-weight: 300;
       color: #fff; line-height: 1.5; margin-bottom: 32px;
     }
@@ -130,36 +135,46 @@
     .philosophy-rule-gem { color: var(--gold); font-size: 8px; }
     .philosophy p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 2.4; font-weight: 300; max-width: 560px; margin: 0 auto; }
 
-    /* ─── TREATMENTS ─── */
     .treatments { padding: 120px 20px; background: var(--bg); }
     .treatments-container { max-width: 1000px; margin: 0 auto; }
     .section-header { margin-bottom: 72px; }
     .section-header .label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
-    .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 300; line-height: 1.3; }
+    .section-header h2 { font-family: Georgia, serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 300; line-height: 1.3; }
     .section-header h2 em { color: var(--gold); font-style: italic; }
     .treatment-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(168,131,42,0.15); border: 1px solid rgba(168,131,42,0.15); }
     .treatment-card {
-      background: #fff; padding: 48px 36px;
+      background: #fff; padding: 36px 30px 42px;
       transition: background 0.2s;
     }
     .treatment-card:hover { background: var(--bg); }
-    .treatment-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: rgba(168,131,42,0.15); line-height: 1; font-weight: 300; margin-bottom: 20px; }
-    .treatment-icon { font-size: 36px; margin-bottom: 16px; }
-    .treatment-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; margin-bottom: 12px; color: var(--dark); letter-spacing: 0.05em; }
+    .treatment-photo {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      margin-bottom: 28px;
+      background: #eee3d4;
+    }
+    .treatment-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .treatment-card:hover .treatment-photo img { transform: scale(1.04); }
+    .treatment-num { font-family: Georgia, serif; font-size: 48px; color: rgba(168,131,42,0.15); line-height: 1; font-weight: 300; margin-bottom: 20px; }
+    .treatment-name { font-family: Georgia, serif; font-size: 22px; font-weight: 400; margin-bottom: 12px; color: var(--dark); letter-spacing: 0.05em; }
     .treatment-desc { font-size: 13px; line-height: 2; color: var(--muted); margin-bottom: 24px; }
     .treatment-duration { font-size: 11px; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 6px; text-transform: uppercase; }
     .treatment-price { font-size: 20px; color: var(--dark); font-weight: 300; }
     .treatment-price span { font-size: 12px; color: var(--muted); font-weight: 300; }
 
-    /* ─── FLOW ─── */
     .flow { padding: 100px 20px; background: #fff; }
     .flow-container { max-width: 860px; margin: 0 auto; }
     .flow-header { text-align: center; margin-bottom: 64px; }
     .flow-header .label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
-    .flow-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; }
+    .flow-header h2 { font-family: Georgia, serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; }
     .flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
     .flow-steps::before {
-      content: '';
+      content: "";
       position: absolute; top: 32px; left: 12.5%; right: 12.5%; height: 1px;
       background: linear-gradient(to right, var(--gold-light), var(--gold-light));
     }
@@ -169,55 +184,52 @@
       border: 1px solid var(--gold-light);
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 24px;
-      font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold);
+      font-family: Georgia, serif; font-size: 20px; color: var(--gold);
       background: #fff; position: relative; z-index: 1;
     }
     .flow-step-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
     .flow-step-text { font-size: 12px; color: var(--muted); line-height: 1.9; }
 
-    /* ─── CTA ─── */
     .cta { padding: 100px 20px; background: var(--bg); }
     .cta-container { max-width: 700px; margin: 0 auto; text-align: center; }
-    .cta-ornament { font-family: 'Cormorant Garamond', serif; font-size: 80px; color: rgba(168,131,42,0.1); line-height: 1; margin-bottom: -20px; }
+    .cta-ornament { font-family: Georgia, serif; font-size: 80px; color: rgba(168,131,42,0.1); line-height: 1; margin-bottom: -20px; }
     .cta .label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
-    .cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 300; line-height: 1.5; margin-bottom: 16px; }
+    .cta h2 { font-family: Georgia, serif; font-size: clamp(28px, 4vw, 48px); font-weight: 300; line-height: 1.5; margin-bottom: 16px; }
     .cta h2 em { color: var(--gold); font-style: italic; }
     .cta p { font-size: 13px; color: var(--muted); line-height: 2.2; margin-bottom: 40px; font-weight: 300; }
     .cta-btns { display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .btn-gold-outline { border: 1px solid var(--gold); color: var(--gold); padding: 16px 60px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; border-radius: 1px; display: inline-block; transition: all 0.2s; }
     .btn-gold-outline:hover { background: var(--gold); color: #fff; }
-    .cta-tel { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--dark); font-weight: 300; letter-spacing: 0.08em; }
+    .cta-tel { font-family: Georgia, serif; font-size: 28px; color: var(--dark); font-weight: 300; letter-spacing: 0.08em; }
     .cta-tel-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; margin-top: 4px; text-align: center; }
     .cta-divider { display: flex; align-items: center; gap: 16px; width: 100%; max-width: 200px; }
     .cta-divider-line { flex: 1; height: 1px; background: rgba(168,131,42,0.2); }
     .cta-divider-text { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
 
-    /* ─── ACCESS ─── */
     .access { padding: 88px 20px; background: #fff; border-top: 1px solid rgba(168,131,42,0.1); }
     .access-container { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-    .access-map-area { }
     .access-map {
       aspect-ratio: 1; border-radius: 2px;
-      background: linear-gradient(135deg, #d4c8b4, #e8dcc8);
+      background:
+        linear-gradient(rgba(253,250,245,0.72), rgba(253,250,245,0.72)),
+        repeating-linear-gradient(35deg, #d4c8b4 0 14px, #e8dcc8 14px 28px);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      border: 1px solid rgba(168,131,42,0.15);
     }
-    .access-map-icon { font-size: 48px; }
+    .access-map-icon { font-size: 12px; color: var(--gold); letter-spacing: 0.18em; font-weight: 700; }
     .access-map-text { font-size: 11px; color: #999; letter-spacing: 0.1em; }
-    .access-info { }
-    .access-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--dark); margin-bottom: 4px; letter-spacing: 0.1em; }
+    .access-info h3 { font-family: Georgia, serif; font-size: 26px; font-weight: 300; color: var(--dark); margin-bottom: 4px; letter-spacing: 0.1em; }
     .access-info .salon-tag { font-size: 10px; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 28px; }
     .info-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(168,131,42,0.1); font-size: 13px; }
     .info-item dt { min-width: 64px; color: var(--gold); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; padding-top: 2px; }
     .info-item dd { color: var(--muted); line-height: 1.8; }
 
-    /* ─── FOOTER ─── */
     footer { background: var(--dark); padding: 48px 20px; text-align: center; }
-    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--gold-light); font-weight: 300; letter-spacing: 0.2em; margin-bottom: 8px; font-style: italic; }
+    .footer-logo { font-family: Georgia, serif; font-size: 32px; color: var(--gold-light); font-weight: 300; letter-spacing: 0.2em; margin-bottom: 8px; font-style: italic; }
     .footer-sub { font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 24px; }
     .footer-rule { width: 40px; height: 1px; background: rgba(168,131,42,0.3); margin: 0 auto 20px; }
     .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
 
-    /* ─── SAMPLE BANNER ─── */
     .sample-banner {
       position: fixed; bottom: 0; left: 0; right: 0;
       background: rgba(108,99,255,0.92); color: #fff;
@@ -226,18 +238,20 @@
     }
     .sample-banner a { color: #c7c3ff; text-decoration: underline; }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       header { padding: 0 16px; }
+      .logo { font-size: 24px; }
+      .logo sub { display: none; }
       nav { display: none; }
       .hero { flex-direction: column; }
       .hero-left { flex: none; min-height: 300px; }
+      .hero-left img { min-height: 300px; max-height: 48vh; }
       .hero-left::after { display: none; }
       .hero-tagline-jp { display: none; }
       .hero-right { padding: 48px 24px; }
-      .hero-stats { gap: 24px; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
       .treatment-list { grid-template-columns: 1fr; }
-      .flow-steps { grid-template-columns: 1fr 1fr; }
+      .flow-steps { grid-template-columns: 1fr 1fr; row-gap: 36px; }
       .flow-steps::before { display: none; }
       .access-container { grid-template-columns: 1fr; }
     }
@@ -256,16 +270,13 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero-left">
-      <div class="hero-left-inner">
-        <span class="hero-icon">✨</span>
-      </div>
-      <p class="hero-tagline-jp">あなたの美しさを、光に変える</p>
+      <img src="assets/lumiere-hero.jpg" alt="Lumièreの上質で落ち着いたトリートメントルーム">
+      <p class="hero-tagline-jp">あなたの美しさを、内側から整える</p>
     </div>
     <div class="hero-right">
-      <p class="hero-eyebrow">Total Beauty Salon · Ginza · Since 2016</p>
+      <p class="hero-eyebrow">Total Beauty Salon / Ginza / Since 2016</p>
       <h1>
         あなたの中の<br>美しさを、
         <em>解き放つ。</em>
@@ -275,7 +286,7 @@
         <div class="hero-rule-diamond">◆</div>
         <div class="hero-rule-line"></div>
       </div>
-      <p>Lumièreとはフランス語で「光」。<br>肌のハリ、目元の輝き、全身のバランス。<br>ひとりひとりに合わせた施術で、<br>本来持つ美しさを引き出します。</p>
+      <p>Lumièreとはフランス語で「光」。肌のハリ、目元の輝き、身体のバランス。一人ひとりに合わせた施術で、本来持つ美しさを引き出します。</p>
       <div class="hero-cta">
         <a href="#cta" class="btn-dark">無料カウンセリングを予約</a>
         <a href="#treatments" class="btn-text">メニューを見る →</a>
@@ -297,7 +308,6 @@
     </div>
   </section>
 
-  <!-- PHILOSOPHY -->
   <section class="philosophy" id="philosophy">
     <div class="philosophy-container">
       <p class="philosophy-label">Our Philosophy</p>
@@ -310,11 +320,10 @@
         <div class="philosophy-rule-gem">◆</div>
         <div class="philosophy-rule-line"></div>
       </div>
-      <p>流行を追うのではなく、あなたの骨格・肌質・ライフスタイルを丁寧にヒアリングし、その人だけの美しさを引き出すことがLumièreの使命です。初回は必ず60分のカウンセリングから始まります。</p>
+      <p>流行を追うのではなく、骨格・肌質・ライフスタイルを丁寧にヒアリングし、その人だけの美しさを引き出すことがLumièreの使命です。初回は必ず60分のカウンセリングから始まります。</p>
     </div>
   </section>
 
-  <!-- TREATMENTS -->
   <section class="treatments" id="treatments">
     <div class="treatments-container">
       <div class="section-header">
@@ -323,26 +332,32 @@
       </div>
       <div class="treatment-list">
         <div class="treatment-card">
+          <div class="treatment-photo">
+            <img src="assets/lumiere-facial.jpg" alt="Lumièreのフェイシャルトリートメント">
+          </div>
           <div class="treatment-num">01</div>
-          <div class="treatment-icon">🌸</div>
-          <p class="treatment-name">フェイシャルトリートメント</p>
-          <p class="treatment-desc">最新機器と手技を組み合わせた本格フェイシャル。毛穴・シミ・ハリ、あらゆる肌悩みにアプローチします。</p>
+          <p class="treatment-name">Facial Treatment</p>
+          <p class="treatment-desc">機器と手技を組み合わせた本格フェイシャル。毛穴、くすみ、ハリなど、肌悩みに合わせてアプローチします。</p>
           <p class="treatment-duration">60 / 90 / 120 min</p>
           <p class="treatment-price">¥12,000 <span>〜</span></p>
         </div>
         <div class="treatment-card">
+          <div class="treatment-photo">
+            <img src="assets/lumiere-body.jpg" alt="Lumièreのアロマボディケアの準備風景">
+          </div>
           <div class="treatment-num">02</div>
-          <div class="treatment-icon">💆</div>
-          <p class="treatment-name">ボディトリートメント</p>
-          <p class="treatment-desc">アロマオイルを使った全身ケア。リンパドレナージュで体のめぐりを整え、むくみ・疲れを解消します。</p>
+          <p class="treatment-name">Body Treatment</p>
+          <p class="treatment-desc">アロマオイルを使った全身ケア。リンパドレナージュで身体のめぐりを整え、むくみや疲れをやわらげます。</p>
           <p class="treatment-duration">90 / 120 min</p>
           <p class="treatment-price">¥16,000 <span>〜</span></p>
         </div>
         <div class="treatment-card">
+          <div class="treatment-photo">
+            <img src="assets/lumiere-eye.jpg" alt="Lumièreのアイラッシュとブロウスタイリング">
+          </div>
           <div class="treatment-num">03</div>
-          <div class="treatment-icon">👁</div>
-          <p class="treatment-name">アイラッシュ＆ブロウ</p>
-          <p class="treatment-desc">まつ毛パーマ・まつエク・眉スタイリング。目元の印象を変えることで、顔全体が生まれ変わります。</p>
+          <p class="treatment-name">Eyelash &amp; Brow</p>
+          <p class="treatment-desc">まつ毛パーマ、まつエク、眉スタイリング。目元の印象を整えることで、顔全体が自然に引き立ちます。</p>
           <p class="treatment-duration">60 min 〜</p>
           <p class="treatment-price">¥8,000 <span>〜</span></p>
         </div>
@@ -350,7 +365,6 @@
     </div>
   </section>
 
-  <!-- FLOW -->
   <section class="flow" id="flow">
     <div class="flow-container">
       <div class="flow-header">
@@ -361,12 +375,12 @@
         <div class="flow-step">
           <div class="flow-step-num">I</div>
           <p class="flow-step-title">ご予約</p>
-          <p class="flow-step-text">LINE・電話・Web<br>いずれかでご予約ください</p>
+          <p class="flow-step-text">LINE・電話・Webから<br>ご予約ください</p>
         </div>
         <div class="flow-step">
           <div class="flow-step-num">II</div>
           <p class="flow-step-title">カウンセリング</p>
-          <p class="flow-step-text">60分の無料<br>カウンセリング</p>
+          <p class="flow-step-text">初回60分の無料<br>カウンセリング</p>
         </div>
         <div class="flow-step">
           <div class="flow-step-num">III</div>
@@ -382,13 +396,12 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta" id="cta">
     <div class="cta-container">
-      <div class="cta-ornament">✦</div>
+      <div class="cta-ornament">◇</div>
       <p class="label">Reservation</p>
       <h2>初回カウンセリングは<br><em>無料でご体験いただけます。</em></h2>
-      <p>まずはお気軽にご連絡ください。<br>お一人おひとりの肌の状態をしっかり確認した上で、<br>最適なメニューをご提案いたします。</p>
+      <p>まずはお気軽にご連絡ください。お一人おひとりの肌や身体の状態を確認した上で、最適なメニューをご提案いたします。</p>
       <div class="cta-btns">
         <a href="#" class="btn-gold-outline">オンラインで予約する</a>
         <div class="cta-divider">
@@ -396,28 +409,27 @@
           <span class="cta-divider-text">or</span>
           <div class="cta-divider-line"></div>
         </div>
-        <p class="cta-tel">03 — XXXX — XXXX</p>
-        <p class="cta-tel-label">受付時間 10:00〜20:00（火曜定休）</p>
+        <p class="cta-tel">03-XXXX-XXXX</p>
+        <p class="cta-tel-label">受付時間 10:00〜20:00 / 火曜定休</p>
       </div>
     </div>
   </section>
 
-  <!-- ACCESS -->
   <section class="access" id="access">
     <div class="access-container">
       <div class="access-map-area">
         <div class="access-map">
-          <div class="access-map-icon">📍</div>
+          <div class="access-map-icon">ACCESS MAP</div>
           <p class="access-map-text">Google Maps</p>
         </div>
       </div>
       <div class="access-info">
         <h3>Lumière</h3>
-        <p class="salon-tag">Total Beauty Salon · Ginza</p>
+        <p class="salon-tag">Total Beauty Salon / Ginza</p>
         <dl>
           <div class="info-item"><dt>住所</dt><dd>東京都中央区銀座X-X-X<br>ビル5F</dd></div>
           <div class="info-item"><dt>最寄駅</dt><dd>銀座駅より徒歩3分</dd></div>
-          <div class="info-item"><dt>営業時間</dt><dd>10:00〜20:00（最終受付 18:30）</dd></div>
+          <div class="info-item"><dt>営業時間</dt><dd>10:00〜20:00 / 最終受付18:30</dd></div>
           <div class="info-item"><dt>定休日</dt><dd>毎週火曜日、第3月曜日</dd></div>
           <div class="info-item"><dt>TEL</dt><dd>03-XXXX-XXXX</dd></div>
           <div class="info-item"><dt>決済</dt><dd>現金・各種クレジットカード</dd></div>
@@ -428,13 +440,13 @@
 
   <footer>
     <p class="footer-logo">Lumière</p>
-    <p class="footer-sub">Total Beauty Salon · Tokyo Ginza</p>
+    <p class="footer-sub">Total Beauty Salon / Tokyo Ginza</p>
     <div class="footer-rule"></div>
-    <p class="footer-copy">© 2024 Lumière Beauty Salon. All Rights Reserved.</p>
+    <p class="footer-copy">© 2026 Lumière Beauty Salon. All Rights Reserved.</p>
   </footer>
 
   <div class="sample-banner">
-    ⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
+    これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
   </div>
 
 </body>
