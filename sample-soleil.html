@@ -4,39 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soleil | カフェ &amp; ギャラリー</title>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --dark: #120a02;
-      --mid-dark: #1e1005;
+      --mid-dark: #1d1208;
       --amber: #e8920a;
       --amber-light: #f0b040;
-      --terra: #c45018;
+      --terra: #b94e1b;
+      --sage: #6f8065;
+      --ink: #17212a;
       --cream: #fdf5e6;
       --warm-light: #f8f0e0;
       --text: #1e1005;
-      --muted: #7a5a38;
+      --muted: #73583a;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--dark); overflow-x: hidden; }
+    body { font-family: "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif; color: var(--text); background: var(--dark); overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-    /* HEADER */
     header {
       position: fixed; top: 0; width: 100%; z-index: 200;
-      background: rgba(18, 10, 2, 0.9); backdrop-filter: blur(16px);
+      background: rgba(18, 10, 2, 0.88); backdrop-filter: blur(16px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 72px;
-      border-bottom: 1px solid rgba(232,146,10,0.15);
+      border-bottom: 1px solid rgba(232,146,10,0.16);
     }
-    .logo { font-family: 'Abril Fatface', cursive; font-size: 28px; color: var(--amber); letter-spacing: 0.05em; }
-    .logo sub { font-family: 'Noto Sans JP', sans-serif; font-size: 9px; letter-spacing: 0.25em; color: rgba(232,146,10,0.6); font-weight: 300; vertical-align: middle; margin-left: 4px; }
+    .logo { font-family: Georgia, "Times New Roman", serif; font-size: 28px; color: var(--amber); letter-spacing: 0.05em; }
+    .logo sub { font-family: "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif; font-size: 9px; letter-spacing: 0.25em; color: rgba(232,146,10,0.66); font-weight: 300; vertical-align: middle; margin-left: 4px; }
     nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 12px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    nav a { font-size: 12px; letter-spacing: 0.12em; color: rgba(255,255,255,0.58); transition: color 0.2s; white-space: nowrap; }
     nav a:hover { color: var(--amber); }
 
-    /* HERO */
     .hero {
       min-height: 100vh; position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: flex-end;
@@ -45,69 +45,70 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 30% 50%, rgba(232,146,10,0.12) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(196,80,24,0.1) 0%, transparent 50%),
-        linear-gradient(180deg, #0a0400 0%, #1e0e04 40%, #2e1408 100%);
+        radial-gradient(ellipse at 24% 48%, rgba(232,146,10,0.14) 0%, transparent 52%),
+        radial-gradient(ellipse at 74% 18%, rgba(111,128,101,0.18) 0%, transparent 44%),
+        linear-gradient(180deg, #0a0400 0%, #1e0e04 44%, #2c1407 100%);
     }
     .hero-visual {
-      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
-      background: linear-gradient(180deg, #2e1408 0%, #4a2010 40%, #6a3820 100%);
+      position: absolute; top: 0; right: 0; width: 58%; height: 100%;
       clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-      display: flex; align-items: center; justify-content: center;
+      background:
+        linear-gradient(90deg, rgba(18,10,2,0.74), rgba(18,10,2,0.08) 48%, rgba(18,10,2,0.42)),
+        url("assets/soleil-hero.jpg") center / cover no-repeat;
     }
-    .hero-visual-inner { text-align: center; padding: 40px; }
-    .hero-visual-emoji { font-size: 160px; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+    .hero-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(18,10,2,0.08), rgba(18,10,2,0.35));
+    }
     .hero-content {
       position: relative; z-index: 1;
       padding: 0 0 80px 80px;
-      max-width: 600px;
+      max-width: 620px;
     }
     .hero-label {
       display: inline-flex; align-items: center; gap: 10px;
-      font-size: 10px; letter-spacing: 0.4em; color: var(--amber); text-transform: uppercase;
+      font-size: 10px; letter-spacing: 0.34em; color: var(--amber); text-transform: uppercase;
       margin-bottom: 36px;
     }
     .hero-label::before { content: ''; width: 32px; height: 1px; background: var(--amber); }
     .hero h1 {
-      font-family: 'Abril Fatface', cursive;
-      font-size: clamp(56px, 8vw, 110px);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 8vw, 112px);
       color: #fff; line-height: 0.95;
-      margin-bottom: 8px; letter-spacing: -0.01em;
+      margin-bottom: 8px; letter-spacing: 0;
     }
     .hero-h1-sub {
-      font-family: 'DM Serif Display', serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(20px, 3vw, 34px);
       color: var(--amber); font-style: italic;
       margin-bottom: 40px; display: block;
       letter-spacing: 0.03em;
     }
-    .hero p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 2.2; margin-bottom: 48px; font-weight: 300; }
+    .hero p { color: rgba(255,255,255,0.64); font-size: 14px; line-height: 2.2; margin-bottom: 48px; font-weight: 300; }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-amber { background: var(--amber); color: var(--dark); padding: 14px 36px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; border-radius: 2px; display: inline-block; transition: background 0.2s; }
-    .btn-amber:hover { background: var(--amber-light); }
-    .btn-ghost { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75); padding: 14px 28px; font-size: 13px; border-radius: 2px; display: inline-block; transition: all 0.2s; }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+    .btn-amber { background: var(--amber); color: var(--dark); padding: 14px 36px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; border-radius: 2px; display: inline-block; transition: background 0.2s, transform 0.2s; }
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-1px); }
+    .btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.82); padding: 14px 28px; font-size: 13px; border-radius: 2px; display: inline-block; transition: all 0.2s; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.72); color: #fff; }
     .hero-scroll {
       position: absolute; bottom: 40px; right: 80px;
       display: flex; flex-direction: column; align-items: center; gap: 10px;
-      font-size: 10px; letter-spacing: 0.3em; color: rgba(255,255,255,0.25);
+      font-size: 10px; letter-spacing: 0.3em; color: rgba(255,255,255,0.28);
     }
     .hero-scroll::after { content: ''; width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); }
 
-    /* CONCEPT */
     .concept { background: #fff; }
     .concept-grid { display: grid; grid-template-columns: 1fr 1fr; }
     .concept-img {
       min-height: 560px;
-      background: linear-gradient(160deg, #1e0a02, #5a2810);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 120px;
+      background: url("assets/soleil-concept.jpg") center / cover no-repeat;
       position: relative;
     }
     .concept-img::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.03));
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.05));
     }
     .concept-body {
       padding: 80px 72px; display: flex; flex-direction: column; justify-content: center;
@@ -115,46 +116,43 @@
     }
     .concept-label { font-size: 10px; letter-spacing: 0.4em; color: var(--amber); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
     .concept-label::after { content: ''; display: block; flex: 1; max-width: 40px; height: 1px; background: var(--amber-light); }
-    .concept h2 { font-family: 'Abril Fatface', cursive; font-size: clamp(28px, 3.5vw, 48px); line-height: 1.2; margin-bottom: 28px; color: var(--text); }
+    .concept h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 3.5vw, 48px); line-height: 1.2; margin-bottom: 28px; color: var(--text); }
     .concept h2 em { color: var(--terra); font-style: italic; }
     .concept-rule { width: 32px; height: 2px; background: var(--amber); margin-bottom: 28px; }
     .concept p { font-size: 14px; line-height: 2.2; color: var(--muted); margin-bottom: 16px; font-weight: 300; }
     .concept-stats { display: flex; gap: 32px; margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(232,146,10,0.15); }
-    .c-stat-num { font-family: 'Abril Fatface', cursive; font-size: 36px; color: var(--amber); line-height: 1; }
+    .c-stat-num { font-family: Georgia, "Times New Roman", serif; font-size: 36px; color: var(--amber); line-height: 1; }
     .c-stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
 
-    /* MENU */
     .menu { padding: 100px 80px; background: var(--warm-light); }
     .menu-container { max-width: 1000px; margin: 0 auto; }
-    .menu-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; }
-    .menu-header-left {}
+    .menu-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 24px; }
     .menu-label { font-size: 10px; letter-spacing: 0.4em; color: var(--terra); text-transform: uppercase; margin-bottom: 12px; }
-    .menu-header h2 { font-family: 'Abril Fatface', cursive; font-size: clamp(28px, 3.5vw, 46px); color: var(--text); }
-    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--warm-mid); }
+    .menu-header h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 3.5vw, 46px); color: var(--text); }
+    .menu-link { font-size:12px; color:var(--muted); display:flex; align-items:center; gap:6px; white-space: nowrap; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(196,80,24,0.12); }
     .menu-card { background: #fff; padding: 0; overflow: hidden; }
     .menu-card-img {
       aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 72px;
+      background: var(--ink);
+      overflow: hidden;
     }
-    .menu-card-img.m1 { background: linear-gradient(135deg, #2a1208, #6a2e10); }
-    .menu-card-img.m2 { background: linear-gradient(135deg, #4a2808, #9a6020); }
-    .menu-card-img.m3 { background: linear-gradient(135deg, #1a0e04, #5a3018); }
+    .menu-card-img img { transition: transform 0.35s ease; }
+    .menu-card:hover .menu-card-img img { transform: scale(1.04); }
     .menu-card-body { padding: 24px 24px 28px; }
     .menu-card-category { font-size: 10px; letter-spacing: 0.25em; color: var(--terra); text-transform: uppercase; margin-bottom: 8px; }
-    .menu-card-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+    .menu-card-name { font-family: Georgia, "Times New Roman", serif; font-size: 20px; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
     .menu-card-desc { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
-    .menu-card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .menu-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .menu-card-price { font-size: 18px; color: var(--terra); font-weight: 700; }
-    .menu-card-tag { font-size: 10px; background: var(--warm-light); color: var(--muted); padding: 4px 10px; border-radius: 2px; }
+    .menu-card-tag { font-size: 10px; background: var(--warm-light); color: var(--muted); padding: 4px 10px; border-radius: 2px; white-space: nowrap; }
 
-    /* GALLERY */
     .gallery { background: var(--dark); padding: 100px 80px; }
     .gallery-container { max-width: 1100px; margin: 0 auto; }
-    .gallery-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
+    .gallery-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; gap: 24px; }
     .gallery-label { font-size: 10px; letter-spacing: 0.4em; color: var(--amber); text-transform: uppercase; margin-bottom: 12px; }
-    .gallery-header h2 { font-family: 'Abril Fatface', cursive; font-size: clamp(28px, 3.5vw, 48px); color: #fff; }
-    .gallery-link { font-size: 12px; color: var(--amber); letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .gallery-header h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 3.5vw, 48px); color: #fff; }
+    .gallery-link { font-size: 12px; color: var(--amber); letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; white-space: nowrap; }
     .gallery-link:hover { gap: 10px; }
     .gallery-grid {
       display: grid;
@@ -164,20 +162,21 @@
     }
     .gallery-item {
       border-radius: 2px; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 40px; min-height: 160px;
+      min-height: 160px;
+      background: #2c1b0d;
     }
-    .gi1 { grid-column: 1 / 6; grid-row: 1 / 3; font-size: 80px; background: linear-gradient(160deg, #2e1408, #7a3a18); min-height: 320px; }
-    .gi2 { grid-column: 6 / 9; background: linear-gradient(135deg, #4a2010, #8a4020); }
-    .gi3 { grid-column: 9 / 13; background: linear-gradient(135deg, #1e1008, #5a2808); }
-    .gi4 { grid-column: 6 / 9; grid-row: 2; background: linear-gradient(135deg, #3a1a08, #6a3010); }
-    .gi5 { grid-column: 9 / 13; grid-row: 2; background: linear-gradient(135deg, #2a1408, #4a2a10); font-size: 48px; }
+    .gallery-item img { transition: transform 0.35s ease, filter 0.35s ease; }
+    .gallery-item:hover img { transform: scale(1.035); filter: saturate(1.06); }
+    .gi1 { grid-column: 1 / 6; grid-row: 1 / 3; min-height: 320px; }
+    .gi2 { grid-column: 6 / 9; }
+    .gi3 { grid-column: 9 / 13; }
+    .gi4 { grid-column: 6 / 9; grid-row: 2; }
+    .gi5 { grid-column: 9 / 13; grid-row: 2; }
 
-    /* EXHIBITION */
     .exhibition { padding: 100px 80px; background: var(--mid-dark); }
     .exhibition-container { max-width: 900px; margin: 0 auto; }
     .exhibition-label { font-size: 10px; letter-spacing: 0.4em; color: var(--amber); text-transform: uppercase; margin-bottom: 16px; }
-    .exhibition h2 { font-family: 'Abril Fatface', cursive; font-size: clamp(28px, 3.5vw, 46px); color: #fff; margin-bottom: 48px; }
+    .exhibition h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 3.5vw, 46px); color: #fff; margin-bottom: 48px; }
     .exhibition h2 em { color: var(--amber-light); font-style: italic; }
     .exhibition-list { display: flex; flex-direction: column; gap: 0; }
     .exhibition-item {
@@ -188,74 +187,82 @@
     }
     .exhibition-date { text-align: center; }
     .exhibition-month { font-size: 11px; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase; }
-    .exhibition-day { font-family: 'Abril Fatface', cursive; font-size: 40px; color: #fff; line-height: 1; }
-    .exhibition-info {}
-    .exhibition-artist { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 6px; letter-spacing: 0.1em; }
-    .exhibition-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: #fff; margin-bottom: 6px; }
-    .exhibition-period { font-size: 12px; color: rgba(255,255,255,0.4); }
-    .exhibition-status { }
+    .exhibition-day { font-family: Georgia, "Times New Roman", serif; font-size: 40px; color: #fff; line-height: 1; }
+    .exhibition-artist { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 6px; letter-spacing: 0.1em; }
+    .exhibition-title { font-family: Georgia, "Times New Roman", serif; font-size: 20px; color: #fff; margin-bottom: 6px; }
+    .exhibition-period { font-size: 12px; color: rgba(255,255,255,0.45); }
     .status-badge { padding: 6px 14px; font-size: 11px; border-radius: 2px; letter-spacing: 0.08em; white-space: nowrap; }
     .status-now { background: rgba(232,146,10,0.15); color: var(--amber); border: 1px solid rgba(232,146,10,0.3); }
-    .status-coming { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); }
+    .status-coming { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.1); }
 
-    /* ACCESS */
     .access { padding: 100px 80px; background: var(--cream); }
     .access-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-    .access-map { aspect-ratio: 4/3; background: linear-gradient(135deg, #c8b898, #ddd0b8); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-    .access-map-icon { font-size: 56px; }
-    .access-map-text { font-size: 12px; color: #999; letter-spacing: 0.1em; }
-    .access-info {}
-    .access-info h3 { font-family: 'Abril Fatface', cursive; font-size: 28px; color: var(--text); margin-bottom: 4px; }
+    .access-map { aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; position: relative; background: #d9cbb7; }
+    .access-map::after {
+      content: '渋谷駅から徒歩5分';
+      position: absolute; left: 18px; bottom: 18px;
+      background: rgba(18,10,2,0.76); color: #fff;
+      padding: 9px 14px; border-radius: 2px;
+      font-size: 12px; letter-spacing: 0.08em;
+    }
+    .access-info h3 { font-family: Georgia, "Times New Roman", serif; font-size: 28px; color: var(--text); margin-bottom: 4px; }
     .access-info h3 em { color: var(--terra); font-style: italic; }
     .access-sub { font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 28px; }
-    .access-rows { }
     .access-row { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(232,146,10,0.12); font-size: 13px; }
     .access-row dt { min-width: 72px; color: var(--terra); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; padding-top: 2px; }
     .access-row dd { color: var(--muted); line-height: 1.8; }
-    .access-sns { margin-top: 24px; display: flex; gap: 10px; }
+    .access-sns { margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
     .sns-btn { padding: 9px 18px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(196,80,24,0.3); color: var(--terra); transition: all 0.2s; }
     .sns-btn:hover { background: var(--terra); color: #fff; border-color: var(--terra); }
 
-    /* FOOTER */
-    footer { background: var(--dark); padding: 48px 80px; }
+    footer { background: var(--dark); padding: 48px 80px 86px; }
     .footer-inner {
       max-width: 900px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; gap: 28px;
     }
-    .footer-logo { font-family: 'Abril Fatface', cursive; font-size: 32px; color: var(--amber); }
+    .footer-logo { font-family: Georgia, "Times New Roman", serif; font-size: 32px; color: var(--amber); }
     .footer-mid { text-align: center; }
-    .footer-address { font-size: 12px; color: rgba(255,255,255,0.25); margin-bottom: 6px; }
-    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+    .footer-address { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.22); }
     .footer-socials { display: flex; gap: 12px; }
-    .footer-social { width: 36px; height: 36px; border: 1px solid rgba(232,146,10,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.4); transition: all 0.2s; }
+    .footer-social { width: 36px; height: 36px; border: 1px solid rgba(232,146,10,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); transition: all 0.2s; }
     .footer-social:hover { border-color: var(--amber); color: var(--amber); }
 
-    /* SAMPLE BANNER */
     .sample-banner {
       position: fixed; bottom: 0; left: 0; right: 0;
-      background: rgba(108,99,255,0.92); color: #fff;
-      text-align: center; padding: 10px; font-size: 13px;
+      background: rgba(23,33,42,0.94); color: #fff;
+      text-align: center; padding: 10px 16px; font-size: 13px;
       backdrop-filter: blur(4px); z-index: 999;
     }
-    .sample-banner a { color: #c7c3ff; text-decoration: underline; }
+    .sample-banner a { color: #f0b040; text-decoration: underline; }
 
     @media (max-width: 768px) {
       header { padding: 0 16px; }
       nav { display: none; }
-      .hero-visual { display: none; }
-      .hero-content { padding: 80px 24px 64px; }
+      .hero { min-height: 92vh; }
+      .hero-visual {
+        width: 100%; height: 48%; left: 0; top: 0;
+        clip-path: none;
+        opacity: 0.62;
+      }
+      .hero-content { padding: 48vh 24px 64px; max-width: none; }
+      .hero p { line-height: 2; }
+      .hero-scroll { display: none; }
       .concept-grid { grid-template-columns: 1fr; }
       .concept-img { min-height: 260px; }
       .concept-body { padding: 48px 24px; }
+      .concept-stats { gap: 20px; flex-wrap: wrap; }
       .menu, .gallery, .exhibition, .access { padding: 64px 24px; }
+      .menu-header, .gallery-header { align-items: flex-start; flex-direction: column; }
       .menu-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gi1 { grid-column: 1 / 3; grid-row: auto; min-height: 200px; }
-      .gi2, .gi3, .gi4, .gi5 { grid-column: auto; }
-      .exhibition-item { grid-template-columns: 80px 1fr; }
+      .gi1 { grid-column: 1 / 3; grid-row: auto; min-height: 220px; }
+      .gi2, .gi3, .gi4, .gi5 { grid-column: auto; grid-row: auto; min-height: 150px; }
+      .exhibition-item { grid-template-columns: 80px 1fr; gap: 20px; }
       .exhibition-status { display: none; }
-      .access-container { grid-template-columns: 1fr; }
-      footer { padding: 40px 24px; }
+      .access-container { grid-template-columns: 1fr; gap: 36px; }
+      .access-row { align-items: flex-start; }
+      footer { padding: 40px 24px 92px; }
       .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
     }
   </style>
@@ -263,7 +270,7 @@
 <body>
 
   <header>
-    <div class="logo">Soleil <sub>café & gallery</sub></div>
+    <div class="logo">Soleil <sub>cafe &amp; gallery</sub></div>
     <nav>
       <a href="#concept">コンセプト</a>
       <a href="#menu">メニュー</a>
@@ -273,60 +280,53 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-visual">
-      <div class="hero-visual-inner">
-        <span class="hero-visual-emoji">☕</span>
-      </div>
-    </div>
+    <div class="hero-visual" aria-label="朝の光が入るSoleilのカフェギャラリー店内"></div>
     <div class="hero-content">
-      <p class="hero-label">Café & Gallery · Shibuya · Tokyo</p>
+      <p class="hero-label">Cafe & Gallery / Shibuya Tokyo</p>
       <h1>SOLEIL</h1>
-      <span class="hero-h1-sub">— 珈琲とアートが出会う場所</span>
+      <span class="hero-h1-sub">Coffee meets art, softly.</span>
       <p>
-        フランス語で「太陽」を意味するSoleil。<br>
-        一杯の珈琲と、壁に飾られたアート作品が、<br>
-        あなたの日常にひと筋の光をもたらします。
+        渋谷の路地にある、コーヒーとアートの小さなギャラリーカフェ。<br>
+        丁寧に淹れた一杯と季節のスイーツ、壁に並ぶ作品が、<br>
+        忙しい日常に少しだけ明るい余白をつくります。
       </p>
       <div class="hero-btns">
         <a href="#menu" class="btn-amber">メニューを見る</a>
-        <a href="#access" class="btn-ghost">アクセス</a>
+        <a href="#access" class="btn-ghost">お店の場所を見る</a>
       </div>
     </div>
     <p class="hero-scroll">Scroll</p>
   </section>
 
-  <!-- CONCEPT -->
   <section class="concept" id="concept">
     <div class="concept-grid">
-      <div class="concept-img">🫒</div>
+      <div class="concept-img" aria-label="ハンドドリップコーヒーとアートブック"></div>
       <div class="concept-body">
         <p class="concept-label">Concept</p>
-        <h2>珈琲と<em>アート</em>の<br>交差点。</h2>
+        <h2>コーヒーと<em>アート</em>が<br>交差する場所。</h2>
         <div class="concept-rule"></div>
-        <p>Soleilは、珈琲専門家とアートキュレーターが共同運営するカフェ＆ギャラリー。コーヒーを味わいながら、壁に飾られた地元アーティストの作品に触れることができます。</p>
-        <p>毎月テーマを変えた展示会を開催。作品は実際に購入も可能。珈琲とアートが融合した、東京でも珍しい空間です。</p>
+        <p>Soleilは、焙煎士とアートキュレーターが一緒につくるカフェ＆ギャラリーです。香りのよいコーヒーを楽しみながら、若手作家の作品にふれられる空間を用意しています。</p>
+        <p>展示は月ごとに入れ替わり、気に入った作品はその場で購入も可能。ひとりで静かに過ごす時間にも、友人との待ち合わせにも似合う、渋谷の小さな文化拠点です。</p>
         <div class="concept-stats">
           <div>
             <p class="c-stat-num">30+</p>
-            <p class="c-stat-label">提携アーティスト数</p>
+            <p class="c-stat-label">紹介アーティスト</p>
           </div>
           <div>
-            <p class="c-stat-num">月1</p>
-            <p class="c-stat-label">展示会開催頻度</p>
+            <p class="c-stat-num">月替</p>
+            <p class="c-stat-label">企画展示</p>
           </div>
           <div>
             <p class="c-stat-num">8種</p>
-            <p class="c-stat-label">シングルオリジン豆</p>
+            <p class="c-stat-label">自家焙煎コーヒー</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MENU -->
   <section class="menu" id="menu">
     <div class="menu-container">
       <div class="menu-header">
@@ -334,15 +334,15 @@
           <p class="menu-label">Menu</p>
           <h2>人気メニュー</h2>
         </div>
-        <a href="#" style="font-size:12px; color:var(--muted); display:flex; align-items:center; gap:6px;">すべて見る →</a>
+        <a href="#access" class="menu-link">来店して味わう →</a>
       </div>
       <div class="menu-grid">
         <div class="menu-card">
-          <div class="menu-card-img m1">☕</div>
+          <div class="menu-card-img"><img src="assets/soleil-coffee.jpg" alt="Soleilのシグネチャーブレンドコーヒー"></div>
           <div class="menu-card-body">
             <p class="menu-card-category">Coffee</p>
             <p class="menu-card-name">シグネチャーブレンド</p>
-            <p class="menu-card-desc">エチオピアとグアテマラのブレンド。自家焙煎にこだわった、Soleil定番の一杯。</p>
+            <p class="menu-card-desc">エチオピアとグアテマラを合わせた、花のような香りとやわらかな甘みの一杯。</p>
             <div class="menu-card-footer">
               <p class="menu-card-price">¥680</p>
               <span class="menu-card-tag">HOT / ICE</span>
@@ -350,23 +350,23 @@
           </div>
         </div>
         <div class="menu-card">
-          <div class="menu-card-img m2">🍰</div>
+          <div class="menu-card-img"><img src="assets/soleil-cheesecake.jpg" alt="バスクチーズケーキ"></div>
           <div class="menu-card-body">
             <p class="menu-card-category">Sweets</p>
             <p class="menu-card-name">バスクチーズケーキ</p>
-            <p class="menu-card-desc">毎朝焼き上げる自家製バスクチーズケーキ。外側の香ばしさと中の濃厚さのコントラスト。</p>
+            <p class="menu-card-desc">毎朝焼き上げる自家製ケーキ。濃厚な口どけと香ばしい表面がコーヒーに合います。</p>
             <div class="menu-card-footer">
               <p class="menu-card-price">¥580</p>
-              <span class="menu-card-tag">日替わり</span>
+              <span class="menu-card-tag">数量限定</span>
             </div>
           </div>
         </div>
         <div class="menu-card">
-          <div class="menu-card-img m3">🥑</div>
+          <div class="menu-card-img"><img src="assets/soleil-toast.jpg" alt="アボカドトースト"></div>
           <div class="menu-card-body">
             <p class="menu-card-category">Food</p>
             <p class="menu-card-name">アボカドトースト</p>
-            <p class="menu-card-desc">自家製天然酵母パンに、厳選アボカドとスパイスをのせたオープンサンド。</p>
+            <p class="menu-card-desc">天然酵母パンに熟したアボカドとハーブをのせた、軽いランチにぴったりの一皿。</p>
             <div class="menu-card-footer">
               <p class="menu-card-price">¥980</p>
               <span class="menu-card-tag">11:00〜</span>
@@ -377,31 +377,29 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
   <section class="gallery" id="gallery">
     <div class="gallery-container">
       <div class="gallery-header">
         <div>
           <p class="gallery-label">Gallery</p>
-          <h2>ギャラリー</h2>
+          <h2>店内ギャラリー</h2>
         </div>
-        <a href="#" class="gallery-link">Instagram で見る →</a>
+        <a href="#exhibition" class="gallery-link">展示予定を見る →</a>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item gi1">🎨</div>
-        <div class="gallery-item gi2">🖼</div>
-        <div class="gallery-item gi3">🌅</div>
-        <div class="gallery-item gi4">☕</div>
-        <div class="gallery-item gi5">🌿</div>
+        <div class="gallery-item gi1"><img src="assets/soleil-gallery-main.jpg" alt="Soleilのギャラリーウォール"></div>
+        <div class="gallery-item gi2"><img src="assets/soleil-gallery-art.jpg" alt="抽象画と花器の展示"></div>
+        <div class="gallery-item gi3"><img src="assets/soleil-gallery-table.jpg" alt="カフェ席とアートブック"></div>
+        <div class="gallery-item gi4"><img src="assets/soleil-gallery-counter.jpg" alt="焼き菓子とギャラリーカウンター"></div>
+        <div class="gallery-item gi5"><img src="assets/soleil-concept.jpg" alt="コーヒーと小さな作品"></div>
       </div>
     </div>
   </section>
 
-  <!-- EXHIBITION -->
   <section class="exhibition" id="exhibition">
     <div class="exhibition-container">
       <p class="exhibition-label">Exhibitions</p>
-      <h2>展示スケジュール<em>2024</em></h2>
+      <h2>展示スケジュール <em>2026</em></h2>
       <div class="exhibition-list">
         <div class="exhibition-item">
           <div class="exhibition-date">
@@ -409,9 +407,9 @@
             <p class="exhibition-day">01</p>
           </div>
           <div class="exhibition-info">
-            <p class="exhibition-artist">田中 美月 / Mizuki Tanaka</p>
-            <p class="exhibition-title">「光の粒子」— 透明水彩とペン画</p>
-            <p class="exhibition-period">2024年6月1日（土）〜 6月30日（日）</p>
+            <p class="exhibition-artist">田中 瑞月 / Mizuki Tanaka</p>
+            <p class="exhibition-title">「光の粒子」水彩とペン画</p>
+            <p class="exhibition-period">2026年6月1日（月）〜 6月30日（火）</p>
           </div>
           <div class="exhibition-status">
             <span class="status-badge status-now">開催中</span>
@@ -424,8 +422,8 @@
           </div>
           <div class="exhibition-info">
             <p class="exhibition-artist">佐藤 雄大 / Yudai Sato</p>
-            <p class="exhibition-title">「Urban Fragment」— 写真とコラージュ</p>
-            <p class="exhibition-period">2024年7月6日（土）〜 7月31日（水）</p>
+            <p class="exhibition-title">「Urban Fragment」写真とコラージュ</p>
+            <p class="exhibition-period">2026年7月6日（月）〜 7月31日（金）</p>
           </div>
           <div class="exhibition-status">
             <span class="status-badge status-coming">Coming Soon</span>
@@ -438,8 +436,8 @@
           </div>
           <div class="exhibition-info">
             <p class="exhibition-artist">吉田 彩花 / Ayaka Yoshida</p>
-            <p class="exhibition-title">「夏の終わりに」— 陶芸とドローイング</p>
-            <p class="exhibition-period">2024年8月3日（土）〜 8月31日（土）</p>
+            <p class="exhibition-title">「夏の終わりに」陶芸とドローイング</p>
+            <p class="exhibition-period">2026年8月3日（月）〜 8月31日（月）</p>
           </div>
           <div class="exhibition-status">
             <span class="status-badge status-coming">Coming Soon</span>
@@ -449,27 +447,23 @@
     </div>
   </section>
 
-  <!-- ACCESS -->
   <section class="access" id="access">
     <div class="access-container">
-      <div class="access-map">
-        <div class="access-map-icon">📍</div>
-        <p class="access-map-text">Google Maps</p>
-      </div>
+      <div class="access-map"><img src="assets/soleil-exterior.jpg" alt="Soleilの外観"></div>
       <div class="access-info">
-        <h3>Soleil <em>Café &amp; Gallery</em></h3>
-        <p class="access-sub">カフェ &amp; ギャラリー · 渋谷</p>
+        <h3>Soleil <em>Cafe &amp; Gallery</em></h3>
+        <p class="access-sub">カフェ &amp; ギャラリー / 渋谷</p>
         <dl class="access-rows">
           <div class="access-row"><dt>住所</dt><dd>東京都渋谷区X-X-X 1F</dd></div>
           <div class="access-row"><dt>最寄駅</dt><dd>渋谷駅より徒歩5分</dd></div>
-          <div class="access-row"><dt>営業時間</dt><dd>9:00〜19:00（LO 18:30）</dd></div>
+          <div class="access-row"><dt>営業時間</dt><dd>9:00〜19:00（L.O. 18:30）</dd></div>
           <div class="access-row"><dt>定休日</dt><dd>毎週水曜日</dd></div>
           <div class="access-row"><dt>TEL</dt><dd>03-XXXX-XXXX</dd></div>
-          <div class="access-row"><dt>座席数</dt><dd>店内 24席 / テラス 8席</dd></div>
+          <div class="access-row"><dt>席数</dt><dd>店内 24席 / テラス 8席</dd></div>
         </dl>
         <div class="access-sns">
-          <a href="#" class="sns-btn">📷 Instagram</a>
-          <a href="#" class="sns-btn">🐦 Twitter</a>
+          <a href="#" class="sns-btn">Instagram</a>
+          <a href="#" class="sns-btn">X / Twitter</a>
         </div>
       </div>
     </div>
@@ -480,18 +474,18 @@
       <div class="footer-logo">Soleil</div>
       <div class="footer-mid">
         <p class="footer-address">〒150-0001 東京都渋谷区X-X-X</p>
-        <p class="footer-copy">© 2024 Café &amp; Gallery Soleil. All Rights Reserved.</p>
+        <p class="footer-copy">© 2026 Cafe &amp; Gallery Soleil. All Rights Reserved.</p>
       </div>
       <div class="footer-socials">
-        <a href="#" class="footer-social">📷</a>
-        <a href="#" class="footer-social">🐦</a>
-        <a href="#" class="footer-social">📌</a>
+        <a href="#" class="footer-social">IG</a>
+        <a href="#" class="footer-social">X</a>
+        <a href="#" class="footer-social">MAP</a>
       </div>
     </div>
   </footer>
 
   <div class="sample-banner">
-    ⚠ これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
+    これは <a href="index.html#works">Clavis Studio</a> が制作したサンプルサイトです。実在の店舗・人物とは関係ありません。
   </div>
 
 </body>
