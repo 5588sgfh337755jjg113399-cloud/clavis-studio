@@ -379,6 +379,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0.2em;
   color: var(--color-text-muted);
 }
+.hero__scroll span {
+  padding-left: 0.2em;
+}
 .scroll-line {
   width: 1px;
   height: 40px;
